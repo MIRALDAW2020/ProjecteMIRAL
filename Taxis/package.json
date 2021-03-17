@@ -21,7 +21,7 @@
     "@angular/router": "~11.1.2",
     "@rxweb/reactive-form-validators": "^2.1.2",
     "bootstrap": "^4.6.0",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "mdb-ui-kit": "^3.2.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
