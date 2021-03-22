@@ -28,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Error404Component,
     SigninComponent,
     IngresComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { IniciComponent } from './inici/inici.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompanyiaComponent } from './components/companyia/companyia.component';
@@ -10,6 +11,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
 
 const routes: Routes = [
+
   { path: '', pathMatch: 'full', redirectTo: 'inici' },
   { path: 'inici', component: IniciComponent},
   { path: 'error404', component: Error404Component},
@@ -20,9 +22,11 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent},
   { path: 'ingres', component: IngresComponent},
   { path: '**', component: Error404Component }
+
 ];
 
 @NgModule({
+
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
