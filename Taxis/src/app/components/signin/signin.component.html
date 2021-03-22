@@ -1,0 +1,130 @@
+<div class="bc-reg mb-5">
+  <div class="container mb-5">
+    <form [formGroup]="formRegistro" method="POST" id="signup">
+
+      <!-- TITOL REGISTRE -->
+      <div class="header">
+        <h3>Registre</h3>
+      </div>
+      <!-- SEPARACIÓ -->
+      <div class="sep"></div>
+
+      <div class="inputs">
+        <div class="form-group">
+
+          <!-- INPUT NOM USUARI -->
+          <input name="nom" type="text" class="form-control" formControlName="name" placeholder="Nom" [ngClass]="{'is-invalid':submitted && f.name.errors}" required/>
+
+          <!-- MISSATGE ERROR NOM -->
+          <div *ngIf = "submitted && f.name.errors">
+            <p *ngIf = "f.name.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+            <p *ngIf = "f.name.errors.minlength" class="msg">
+              Minim introduïr 4 caracters!
+            </p>
+            <p *ngIf = "f.name.errors.maxlength" class="msg">
+              Màxim introduïr 15 caracters!
+            </p>
+          </div>
+
+          <!-- INPUT COGNOM USUARI -->
+          <input type="text" name="cognom" class="form-control" formControlName="lname" placeholder="Cognoms" required />
+
+          <!-- MISSATGE ERROR COGNOM -->
+          <div *ngIf = "submitted && f.lname.errors">
+            <p *ngIf = "f.lname.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+            <p *ngIf = "f.lname.errors.minlength" class="msg">
+              Minim introduïr 4 caracters!
+            </p>
+            <p *ngIf = "f.lname.errors.maxlength" class="msg">
+              Màxim introduïr 15 caracters!
+            </p>
+          </div>
+
+          <!-- INPUT TELEFON USUARI -->
+          <input type="number" name="telefon" class="form-control" formControlName="telefon" placeholder="Telèfon Movil" required />
+
+          <!-- MISSATGE ERROR TELEFON -->
+          <div *ngIf = "submitted && f.telefon.errors">
+            <p *ngIf = "f.telefon.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+            <p *ngIf = "f.telefon.errors.pattern" class="msg">
+              Telefon Mobil introduït erroni!
+            </p>
+            <p *ngIf = "f.telefon.errors.minlength" class="msg">
+              Minim introduïr 9 numeros!
+            </p>
+            <p *ngIf = "f.telefon.errors.maxlength" class="msg">
+              Màxim introduïr 9 numeros!
+            </p>
+          </div>
+
+          <!-- INPUT CORREU ELECTRONIC USUARI -->
+          <input type="email" name="email" class="form-control" formControlName="email" placeholder="Correu Electronic" required />
+
+          <!-- MISSATGE ERROR CORREU ELECTRONIC -->
+          <div *ngIf = "submitted && f.email.errors">
+            <p *ngIf = "f.email.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+            <p *ngIf = "f.email.errors.email" class="msg">
+              Introdueix un correu valid!
+            </p>
+          </div>
+
+          <!-- INPUT CONTRASENYA USUARI -->
+          <input type="password" name="pass" class="form-control" formControlName="pass" placeholder="Contraseña"
+            required />
+
+          <!-- MISSATGE ERROR CONTRASENYA -->
+          <div *ngIf = "submitted && f.pass.errors">
+            <p *ngIf = "f.pass.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+            <p *ngIf = "f.pass.errors.minlength" class="msg">
+              Minim introduïr 5 caracters!
+            </p>
+            <p *ngIf = "f.pass.errors.maxlength" class="msg">
+              Màxim introduïr 20 caracters!
+            </p>
+          </div>
+
+          <!-- INPUT REPETIR CONTRASENYA -->
+          <input type="password" name="rpass" class="form-control" formControlName="rpass" placeholder="Confirmar la Contraseña" required />
+
+          <!-- MISSATGE ERROR REPETIR CONTRASENYA -->
+          <div *ngIf = "submitted && f.rpass.errors">
+            <p *ngIf = "f.rpass.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+            <p *ngIf = "f.rpass.errors.compare" class="msg">
+              Les contrasenyes no coincideixen!
+            </p>
+          </div>
+
+
+          <div class="checkboxy">
+            <input name="cecky" id="checky" type="checkbox" required/>
+            <label class="terms">
+              Accepto el terminis i les condicions
+            </label>
+          </div>
+
+          <div class="buttons">
+            <div class="containerbtn">
+              <button type="button" class="btn effect04" data-sm-link-text="Registra'm" target="_blank"
+                (click)="registrarUsuari()">
+                <span>Registra'm</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
