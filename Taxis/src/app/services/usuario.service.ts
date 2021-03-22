@@ -16,4 +16,8 @@ export class UsuarioService {
     return this.http.post(`${api}server/registreUsuari.php`, JSON.stringify(registre));
   }
 
+  login(correu:string,passw:string){
+    return this.http.post(`${api}server/login.php`, { correu, passw });
+  }
+
 }

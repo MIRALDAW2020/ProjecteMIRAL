@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-ingres',
@@ -14,23 +16,14 @@ export class IngresComponent implements OnInit {
   user: FormGroup;
   verpasswd: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
-
+  constructor(private formBuilder: FormBuilder,private loginService: UsuarioService, private router: Router) {
     this.user = this.formBuilder.group({
-
       correo: ['', Validators.required]
-
     });
-
   }
 
   submitted = false;
-
-  get validacion(){
-
-    return this.user.controls;
-
-  }
+  get validacion(){return this.user.controls;}
 
   habilitarpasswd(): void {
 
@@ -50,15 +43,12 @@ export class IngresComponent implements OnInit {
 
   }
 
-  enviarDatos(): void {
+  enviarDatos(){
 
     this.submitted = true;
+    if(this.user.invalid){return;}
 
-    if(this.user.invalid){
 
-      return;
-
-    }
 
   }
 
