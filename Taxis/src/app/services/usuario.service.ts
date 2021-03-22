@@ -15,5 +15,9 @@ export class UsuarioService {
   registrarUsuari(registre: any){
     return this.http.post(`${api}server/registroAlumno.php`, JSON.stringify(registre));
   }
-  
+
+  loginUsuari(){
+    
+  }
+
 }
