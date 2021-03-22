@@ -1,0 +1,12 @@
+.banner {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px 0px;
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+h4 {
+    color: #DE1313;
+    text-transform: uppercase;
+}
