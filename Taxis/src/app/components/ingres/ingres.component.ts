@@ -9,22 +9,25 @@ import Swal from 'sweetalert2';
   templateUrl: './ingres.component.html',
   styleUrls: ['./ingres.component.css'],
 })
-export class IngresComponent implements OnInit {
-  ngOnInit(): void {}
 
+export class IngresComponent implements OnInit {
   user: FormGroup;
   verpasswd: boolean = false;
-  correu: string = "";
-  pass: string = "";
 
   constructor(
-    private formBuilder: FormBuilder,
+    private readonly formBuilder: FormBuilder,
     private loginService: UsuarioService,
     private router: Router
   ) {
     this.user = this.formBuilder.group({
       correo: ['', Validators.required],
       password: ['', Validators.required],
+    });
+  }
+  ngOnInit(): void {
+    this.user.patchValue({
+      correo: '',
+      password: '',
     });
   }
 
@@ -49,16 +52,13 @@ export class IngresComponent implements OnInit {
     console.log('hola');
     this.submitted = true;
     if (this.user.invalid) {
+      console.log('no va');
       return;
     }
 
-    this.correu = this.user.controls.correo.value;
-    this.pass = this.user.controls.password.value;
+    this.loginService.login(this.user).subscribe((datos: any) => {
+      console.log(datos);
 
-    console.log();
-
-
-    this.loginService.login(this.correu, this.pass).subscribe((datos: any) => {
       if (datos['resultado'] == 'OK') {
         let $mensaje = datos['mensaje'];
         Swal.fire({
@@ -79,7 +79,7 @@ export class IngresComponent implements OnInit {
           showConfirmButton: false,
           timer: 1600,
         });
-      } else if (datos['resultado'] == 'EKO') {
+      } else if (datos['resultado'] == 'KO') {
         let $mensaje = datos['mensaje'];
         Swal.fire({
           position: 'center',
@@ -89,14 +89,8 @@ export class IngresComponent implements OnInit {
           showConfirmButton: false,
           timer: 1600,
         });
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Algo ha ido mal',
-          text: 'Vuelve a intentarlo en un rato!',
-        });
       }
     });
+
   }
-  
 }

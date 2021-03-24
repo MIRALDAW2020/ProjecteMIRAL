@@ -40,25 +40,13 @@ if ($numero == 0) {
     $password2 = $fila["cuantos"];
   }
 
-  $instruccion2 = "select correu as cuantos from usuaris where correu = '$email'";
-  $resultado2 = mysqli_query($con, $instruccion);
-
-  while ($fila2 = $resultado2->fetch_array()) {
-    $email2 = $fila2["cuantos"];
-  }
-
   //Comprovar si coincide el password
   if (!strcmp($password2, $password) == 0) {
 
     $response->resultado = 'CKO';
     $response->mensaje = 'Contrasenya incorrecta';
 
-  }else if (!strcmp($email2, $email) == 0) {
-
-    $response->resultado = 'EKO';
-    $response->mensaje = 'Correu electronic incorrecte';
-
-  } else {
+  }else {
 
     $response->resultado = 'OK';
     $response->mensaje = 'Has iniciat sessió correctament!';
