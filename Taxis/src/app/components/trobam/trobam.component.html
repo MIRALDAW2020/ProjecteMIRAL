@@ -1,0 +1,75 @@
+<p>trobam works!</p>
+<p>trobam works!</p>
+
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" >
+
+<agm-marker [latitude]="lat" [longitude]="lng" ng> 
+<agm-info-window>
+    Mi posicion 😁
+</agm-info-window>
+</agm-marker>
+
+
+<agm-marker [latitude]="41.617646758005606" [longitude]=" 0.6126645143463558"> 
+    
+    <agm-info-window>
+<p class="font-weight-bold"> BOLEDA </p>
+C/ Joc de la Bola 1
+    </agm-info-window>
+    </agm-marker>
+
+    <agm-marker [latitude]="41.61951784967104" [longitude]="0.6196503278377155" > 
+        <agm-info-window>
+    <p class="font-weight-bold"> RicardVinyes </p>
+    <p>  AV. Prat de la Riba 1 </p>
+
+        </agm-info-window>
+        </agm-marker>
+
+        <agm-marker [latitude]="41.61184407460319" [longitude]="0.6227261431825122"> 
+            <agm-info-window >
+        <p class="font-weight-bold"> BLONDEL </p>
+            <p>AV. Blondel 27</p>
+            </agm-info-window>
+            </agm-marker>
+
+
+            <agm-marker [latitude]="41.620351979016206" [longitude]="0.6320260370523754"> 
+                <agm-info-window>
+            <p class="font-weight-bold"> RENFE </p>
+                  <p>Pl. Berenguer IV s/n</p>
+                </agm-info-window>
+                </agm-marker>
+            
+                <agm-marker [latitude]="41.62899493587083" [longitude]=" 0.5975617534606433"> 
+                    <agm-info-window>
+                <p class="font-weight-bold"> ARNAU </p>
+                    <p>AV. Rovira Roure 80</p>
+                    </agm-info-window>
+                    </agm-marker>
+
+                    <agm-marker [latitude]="41.610293613804124" [longitude]="0.6291987635724489" > 
+                        <agm-info-window>
+                    <p class="font-weight-bold"> CASTELLS </p>
+                        <p>C/ Riu Ebro 10</p>
+                        </agm-info-window>
+                        </agm-marker>
+
+                        <agm-marker [latitude]="41.60199181668323" [longitude]="0.6420786683113261" > 
+                            <agm-info-window>
+                        <p class="font-weight-bold"> BORDETA </p>
+                        <p>C/ Terol 1</p>
+                            </agm-info-window>
+                            </agm-marker>
+
+
+                                <agm-marker [latitude]="41.62199868613928" [longitude]="0.626234268311653" > 
+                                    <agm-info-window>
+                                <p class="font-weight-bold"> ALIANZA </p>
+                                <p>AV. Prat de la Riba 68</p>
+                                    </agm-info-window>
+                                    </agm-marker>
+
+
+    </agm-map>
+<button (click)="getCurrentPosition()" >Posicion Actual</button>

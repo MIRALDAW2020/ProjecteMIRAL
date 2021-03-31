@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -9,8 +8,10 @@ import { IniciComponent } from './components/inici/inici.component';
 import { QuiSomComponent } from './components/qui-som/qui-som.component';
 import { ContacteComponent } from './components/contacte/contacte.component';
 import { CompanyiaComponent } from './components/companyia/companyia.component';
-import { TrabomComponent } from './components/trobam/trabom.component';
 import { Error404Component } from './components/error404/error404.component';
+import { TrobamComponent } from './components/trobam/trobam.component';
+
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,19 @@ import { Error404Component } from './components/error404/error404.component';
     QuiSomComponent,
     ContacteComponent,
     CompanyiaComponent,
-    TrabomComponent,
+    TrobamComponent,
     Error404Component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    AgmCoreModule.forRoot(
+      {apiKey: 'AIzaSyBvlCdlbREqincb0JrEW0Qld1nECWMaV3M'} 
+
+      // {apiKey:'AIzaSyANsKZFN4NNIWHsVwaYFTDtRRRyPgShY'}
+      )
+
   ],
   providers: [],
   bootstrap: [AppComponent]
