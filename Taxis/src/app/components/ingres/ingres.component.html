@@ -1,67 +1,49 @@
-<!-- Pagina de Inicio -->
-<div class="bg">
+<div class="bc-reg mb-5">
+  <div class="container mb-5">
+    <form [formGroup]="formLogin" method="POST" id="signup">
 
-  <div class="all">
+      <!-- TITOL REGISTRE -->
+      <div class="header">
+        <h3>Conectar-me</h3>
+      </div>
+      <!-- SEPARACIÓ -->
+      <div class="sep"></div>
 
-    <div class="card text-center">
+      <div class="inputs">
+        <div class="form-group">
 
-      <div class="card-body">
+          <!-- INPUT CORREU ELECTRONIC USUARI -->
+          <input type="email" name="email" class="form-control" formControlName="correo" placeholder="Correu Electronic" required />
 
-        <h4 class="card-title">Conectar-me</h4>
-
-        <!-- Formulario de Log In -->
-
-        <form class="container" [formGroup]="user" (ngSubmit)="enviarDatos()">
-
-          <div class="form-group">
-
-            <input type="email" class="form-control" placeholder="Correo" formControlName="correo" name="correo" #vcorreo [ngClass]="{'is-invalid':submitted && validacion.correo.errors}">
-
-              <!-- Validar Correo -->
-              <div *ngIf = "submitted && validacion.correo.errors" class="invalid-feedback mensaje-error">
-
-                <p *ngIf = "validacion.correo.errors.required">Este campo es obligatorio</p>
-
-              </div>
-
+          <!-- MISSATGE ERROR CORREU ELECTRONIC -->
+          <div *ngIf = "submitted && f.correo.errors">
+            <p *ngIf = "f.correo.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>d
           </div>
 
-          <div class="form-group">
+          <!-- INPUT CONTRASENYA USUARI -->
+          <input type="password" name="pass" class="form-control" formControlName="password" placeholder="Contraseña"
+            required />
 
-            <div class="input-group mb-2">
+          <!-- MISSATGE ERROR CONTRASENYA -->
+          <div *ngIf = "submitted && f.password.errors">
+            <p *ngIf = "f.password.errors.required" class="msg">
+              Aquest camp es obligatori
+            </p>
+          </div>
 
-              <input id="passwd" type="password" class="form-control" name="password" placeholder="Contrasenya">
-
-              <div class="input-group-prepend">
-
-                <div class="input-group-text btn" (click)="habilitarpasswd()">
-
-                  <img *ngIf="verpasswd == false" src="/assets/icons/eye.png" width="18px" title="Ver contraseña">
-
-                  <img *ngIf="verpasswd == true" src="/assets/icons/eye-off.png" width="18px" title="Ocultar contraseña">
-
-                </div>
-
-              </div>
-
+          <div class="buttons">
+            <div class="containerbtn">
+              <button type="button" class="btn effect04" data-sm-link-text="Entrar" target="_blank"
+                (click)="enviarDatos()">
+                <span>Entrar</span>
+              </button>
             </div>
-
           </div>
 
-          <button type="submit" class="btn btn-outline-info btn-block">Entrar</button>
-
-        </form>
-
+        </div>
       </div>
-
-      <div class="card-footer text-muted">
-
-        <span class="cuenta-creada">No tengo una cuenta (<a [routerLink]="['/signin']">registrarme</a>)</span>
-
-      </div>
-
-    </div>
-
+    </form>
   </div>
-
 </div>

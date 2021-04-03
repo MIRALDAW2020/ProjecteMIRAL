@@ -5,19 +5,20 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header("Content-Type: text/html;charset=utf-8");
 
 require("db.php");
+session_start();
 
 // Obtengo los datos cargados en el formulario de login.
 $cadena = file_get_contents('php://input');
 $json = json_decode($cadena, true);
 
-$email = $json['correu'];
+$nombre = $json['usuario'];
 $password = $json['passw'];
 
 $con = retornarConexion();
 class Result {}
 $response = new Result();
 
-$instruccion = "select count(*) as cuantos from usuaris where correu = '$email'";
+$instruccion = "select count(*) as cuantos from usuaris where correu = '$nombre'";
 $resultado = mysqli_query($con, $instruccion);
 
 //Comprovar que exista
@@ -33,7 +34,7 @@ if ($numero == 0) {
 
 }else {
 
-  $instruccion = "select contrasenya as cuantos from usuaris where correu = '$email'";
+  $instruccion = "select contrasenya as cuantos from usuaris where correu = '$nombre'";
   $resultado = mysqli_query($con, $instruccion);
 
   while ($fila = $resultado->fetch_array()) {
