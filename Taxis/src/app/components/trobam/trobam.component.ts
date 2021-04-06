@@ -15,9 +15,9 @@ export class TrobamComponent implements OnInit {
   constructor() {
 
     // latitud del mapa
-    this.lat =40,
+    this.lat =40.6123,
      // // longitud
-    this.lng =40,
+    this.lng =40.6123,
       // // zoomb  del mapa 
     this.zoom=10;
     // // tipo de vista de mapa 

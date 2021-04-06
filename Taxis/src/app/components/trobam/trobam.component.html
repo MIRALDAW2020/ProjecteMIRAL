@@ -1,8 +1,10 @@
-<p>trobam works!</p>
-<p>trobam works!</p>
 
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" >
+<h1 class="row justify-content-center align-items-center mt-5">Totes les parades</h1>
 
+
+<div class="row justify-content-center align-items-center mt-5">
+
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
 <agm-marker [latitude]="lat" [longitude]="lng" ng> 
 <agm-info-window>
     Mi posicion 😁
@@ -17,7 +19,6 @@
 C/ Joc de la Bola 1
     </agm-info-window>
     </agm-marker>
-
     <agm-marker [latitude]="41.61951784967104" [longitude]="0.6196503278377155" > 
         <agm-info-window>
     <p class="font-weight-bold"> RicardVinyes </p>
@@ -72,4 +73,8 @@ C/ Joc de la Bola 1
 
 
     </agm-map>
-<button (click)="getCurrentPosition()" >Posicion Actual</button>
+
+</div>
+<!-- <div class="row justify-content-center align-items-center mt-5">
+    <button (click)="getCurrentPosition()" >Posicion Actual</button>
+</div> -->
