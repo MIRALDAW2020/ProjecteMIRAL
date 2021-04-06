@@ -9,10 +9,10 @@ session_start();
 
 // Obtengo los datos cargados en el formulario de login.
 $cadena = file_get_contents('php://input');
-$json = json_decode($cadena, true);
+$json = json_decode($cadena);
 
-$nombre = $json['usuario'];
-$password = $json['passw'];
+$nombre = $json->correu;
+$password = $json->pass;
 
 $con = retornarConexion();
 class Result {}
@@ -56,5 +56,8 @@ if ($numero == 0) {
   }
 
 }
+
+$resultado = json_encode($response);
+echo $resultado;
 
 ?>

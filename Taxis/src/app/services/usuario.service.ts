@@ -17,8 +17,8 @@ export class UsuarioService {
   }
 
 
-  login(usuario: String, passw: String) {
-    return this.http.post(`${api}server/login.php`, { usuario, passw });
+  login(login: any) {
+    return this.http.post(`${api}server/login.php`,  JSON.stringify(login));
   }
 
 }
