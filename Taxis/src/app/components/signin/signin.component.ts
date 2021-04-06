@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {  RxwebValidators } from '@rxweb/reactive-form-validators';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/models/usuario.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signin',
@@ -68,8 +69,40 @@ export class SigninComponent implements OnInit {
       this.formRegistro.controls.email.value,
       this.formRegistro.controls.pass.value
     );
-
     console.log(this.usuario);
+
+    this.usuarioService.registrarUsuari(this.usuario).subscribe((datos:any)=>{
+
+      //Insert OK
+      if (datos['resultado'] == 'OK') {
+        let $mensaje = datos['mensaje'];
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Perfecte',
+          text: $mensaje,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        setTimeout(() => {
+          this.router.navigateByUrl('/ingres');
+        }, 1500);
+
+        // Error al insert
+      }else if (datos['resultado'] == 'KO') {
+        let $mensaje = datos['mensaje'];
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Ups...',
+            text: $mensaje,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+      }
+
+    })
 
   }
 
