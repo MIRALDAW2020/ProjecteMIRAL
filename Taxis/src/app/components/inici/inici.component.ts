@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inici.component.css']
 })
 export class IniciComponent implements OnInit {
+  elementRef: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(){
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#b02626';
+ }
 }
