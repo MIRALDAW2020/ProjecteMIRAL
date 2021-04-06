@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,6 +13,9 @@ import { Error404Component } from './components/error404/error404.component';
 import { TrobamComponent } from './components/trobam/trobam.component';
 
 import {AgmCoreModule} from '@agm/core';
+import { SigninComponent } from './components/signin/signin.component';
+import { IngresComponent } from './components/ingres/ingres.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,18 +27,21 @@ import {AgmCoreModule} from '@agm/core';
     ContacteComponent,
     CompanyiaComponent,
     TrobamComponent,
-    Error404Component
+    Error404Component,
+    SigninComponent,
+    IngresComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     AgmCoreModule.forRoot(
       {apiKey: 'AIzaSyBvlCdlbREqincb0JrEW0Qld1nECWMaV3M'} 
 
       // {apiKey:'AIzaSyANsKZFN4NNIWHsVwaYFTDtRRRyPgShY'}
-      )
-
+      ),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
