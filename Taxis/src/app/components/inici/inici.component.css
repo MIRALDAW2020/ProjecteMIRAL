@@ -1,95 +1,32 @@
-.miContenedor{
-    animation: Mostrar;
-    -webkit-animation: Mostrar;
-    animation: slidein ease-in 1s ;
+.img {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+
+  .center {
+      margin-top: 3.5em;
+      margin-bottom: 1em;   
   }
-  
-  .left{
-    float: left;
-    width: 49%;
-  
+
+}
+
+@media (max-width: 600px) {
+
+  .center-1 {
+      margin-top: 3.5em;
+      margin-bottom: 1em;   
   }
-  
-  .right{
-    float: right;
-    width: 49%;
-   
+
+  .center-2 {
+      margin-bottom: 3.5em;
+      margin-top: 1em;   
   }
-  
-  .fotoTaxi{
-    width: 100%;
-    max-width:120%;
-    animation: Mostrar ease 1s;
-    -webkit-animation: Mostrar ease 1s;
-  }
-  .banner{
-    width: 100%;
-    animation: Mostrar ease 1s;
-    animation: slidein ease-in 1s ;
-    -webkit-animation: Mostrar ease 1s;
-  }
-  
-  .primera_fila{
-      background-color: #f4f4f4;
-      width: 100%;
-      animation: Mostrar ease 1s;
-      -webkit-animation: slidein ease-in 1s ;
-  }
-  
-  
-  #fotoTaxi2{
-   width: 50%;
-   max-width:120%;
-   animation: Mostrar ease 1s;
-   -webkit-animation: Mostrar ease 1s;
-  }
-  
-  .segunda_fila{
-    animation: Mostrar ease 1s;
-  }
-  
-  /* .mi_carousel{
-    width: 80%;
-    margin-left: 5%;
-  
-  } */
-  
-  h1{
-   color:#DE1313 ;
-   animation: Mostrar ease 1s;
-  }
-  
-  
-  
-  /* #carousel {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    image
-  } */
-  
-  
-  /* #colorTexto{
-    background-color: red;
-  } */
-  
-  
-    /* @-webkit-keyframes fadeInFromNone {
-        0% {
-            display: none;
-            opacity: 0;
-        }
-  
-        1% {
-            display: block;
-            opacity: 0;
-        }
-  
-        100% {
-            display: block;
-            opacity: 1;
-        }
-    }
-  } */
-  
+
+}
+
+.fila-continua {
+  background-color: #f4f4f4;
+  width: 100%;
+  margin: auto !important;
+}

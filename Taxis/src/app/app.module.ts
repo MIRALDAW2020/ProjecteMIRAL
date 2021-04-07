@@ -11,8 +11,6 @@ import { ContacteComponent } from './components/contacte/contacte.component';
 import { CompanyiaComponent } from './components/companyia/companyia.component';
 import { Error404Component } from './components/error404/error404.component';
 import { TrobamComponent } from './components/trobam/trobam.component';
-
-import {AgmCoreModule} from '@agm/core';
 import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,11 +32,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgmCoreModule.forRoot(
-      {apiKey: 'AIzaSyBvlCdlbREqincb0JrEW0Qld1nECWMaV3M'} 
-
-      // {apiKey:'AIzaSyANsKZFN4NNIWHsVwaYFTDtRRRyPgShY'}
-      ),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
