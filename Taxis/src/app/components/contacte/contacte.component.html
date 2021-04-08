@@ -16,7 +16,7 @@
 
     <div class="col">
 
-      <p class="text-center" ><img src="/assets/icons/phone.png" width="75px">673 51 42 25</p>
+      <p class="text-center"><img src="/assets/icons/phone.png" width="75px">673 51 42 25</p>
 
     </div>
 
@@ -26,50 +26,52 @@
 
   <div class="fila">
 
-    <form class="formulario" [formGroup] = "user">
+    <form class="formulario" [formGroup]="user">
 
       <div class="row">
 
         <div class="col-left">
 
-            <div class="form-group">
+          <div class="form-group">
 
-                <input type="text" class="form-control" name="nom" placeholder="Nom" formControlName="nom" id="nom" #vnom [ngClass]="{'is-invalid':submitted && validacion.nom.errors}">
+            <input type="text" class="form-control" name="nom" placeholder="Nom" formControlName="nom" id="nom" #vnom
+              [ngClass]="{'is-invalid':submitted && f.nom.errors}">
 
-                <!-- Validar Nickname -->
-                <div *ngIf = "submitted && validacion.nom.errors" class="invalid-feedback mensaje-error">
+            <!-- Validar Nickname -->
+            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback mensaje-error">
 
-                    <p *ngIf = "validacion.nom.errors.required">Este campo es obligatorio</p>
-                    <p *ngIf = "validacion.nom.errors.minlength">Tiene que tener un minimo de 3 caracteres</p>
-                    <p *ngIf = "validacion.nom.errors.maxlength">Tiene que tener un maximo de 15 caracteres</p>
-                    
-                </div>
+              <p *ngIf="f.nom.errors.required">Este campo es obligatorio</p>
+              <p *ngIf="f.nom.errors.minlength">Tiene que tener un minimo de 3 caracteres</p>
+              <p *ngIf="f.nom.errors.maxlength">Tiene que tener un maximo de 15 caracteres</p>
 
             </div>
+
+          </div>
 
         </div>
 
         <div class="col-right">
 
-            <div class="form-group">
+          <div class="form-group">
 
-                <input type="mail" class="form-control" name="cognom" placeholder="Cognom" formControlName="cognom" #vcognom [ngClass]="{'is-invalid':submitted && validacion.cognom.errors}">
+            <input type="mail" class="form-control" name="cognom" placeholder="Cognom" formControlName="cognom" #vcognom
+              [ngClass]="{'is-invalid':submitted && f.cognom.errors}">
 
-                <!-- Validar Correo -->
-                <div *ngIf = "submitted && validacion.cognom.errors" class="invalid-feedback mensaje-error">
+            <!-- Validar Correo -->
+            <div *ngIf="submitted && f.cognom.errors" class="invalid-feedback mensaje-error">
 
-                    <p *ngIf = "validacion.cognom.errors.required">Este campo es obligatorio</p>
-                    <p *ngIf = "validacion.cognom.errors.email">Falta un @</p>
-                    <p *ngIf = "validacion.cognom.errors.minlength">Tiene que tener un minimo de 7 caracteres</p>
-                    <p *ngIf = "validacion.cognom.errors.maxlength">Tiene que tener un maximo de 50 caracteres</p>
-
-                </div>
+              <p *ngIf="f.cognom.errors.required">Este campo es obligatorio</p>
+              <p *ngIf="f.cognom.errors.email">Falta un @</p>
+              <p *ngIf="f.cognom.errors.minlength">Tiene que tener un minimo de 7 caracteres</p>
+              <p *ngIf="f.cognom.errors.maxlength">Tiene que tener un maximo de 50 caracteres</p>
 
             </div>
 
+          </div>
+
         </div>
 
-    </div>
+      </div>
 
 
       <div class="row">
@@ -77,13 +79,13 @@
         <div class="col-left">
 
           <input type="text" maxlength="30" class="form-control" id="Nom" placeholder="Nom">
-  
+
         </div>
-  
+
         <div class="col-right">
-  
+
           <input type="text" maxlength="50" class="form-control" id="Cognom" placeholder="Cognom">
-  
+
         </div>
 
       </div>
@@ -93,28 +95,27 @@
         <input type="email" maxlength="125" class="form-control" id="Correu" placeholder="Correu">
 
       </div>
-      
+
       <div class="row">
-      
+
         <input type="text" maxlength="100" class="form-control" id="Adreça" placeholder="Adreça">
-      
+
       </div>
-      
+
       <div class="row">
-      
+
         <input type="text" maxlength="125" class="form-control" id="Consulta" placeholder="Consulta">
-      
+
       </div>
-      
+
       <div class="row">
-      
+
         <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
-      
+
       </div>
-    
+
     </form>
 
   </div>
- 
-</div>
 
+</div>
