@@ -1,39 +1,120 @@
-<div class="container">
-  <div class="main-block">
-    <div class="row">
-      <div class="col">
-        <p class="form-control text-center contenidor text"><img src="/assets/icons/@.png" width="75px">miral.enterprise.2020@gmail.com</p>
-      </div>
-      <div class="col">
-        <p class="form-control text-center contenidor text" ><img src="/assets/icons/phone.png" width="75px">673 51 42 25</p>
-      </div>
+<div class="banner">
+
+  <p>Contacte</p>
+
+</div>
+
+<div class="main-block">
+
+  <div class="row mt-5 fila">
+
+    <div class="col">
+
+      <p class="text-center"><img src="/assets/icons/@.png" width="75px">miral.enterprise.2020@gmail.com</p>
+
     </div>
-    <br>
-    <form class="row g-3">
-      <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Nom</label>
-        <input type="text" maxlength="30" class="form-control" id="Nom" placeholder="Nom">
-      </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Cognom</label>
-        <input type="text" maxlength="50" class="form-control" id="Cognom" placeholder="Cognom">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress" class="form-label">Correu</label>
-        <input type="email" maxlength="125" class="form-control" id="Correu" placeholder="Correu">
-      </div>
-      <div class="col-12">
-        <label for="inputAddress2" class="form-label">Adreça</label>
-        <input type="text" maxlength="100" class="form-control" id="Adreça" placeholder="Adreça">
-      </div>
-      <div class="col-md-12">
-        <label for="inputCity" class="form-label ">Consulta</label>
-        <input type="text" maxlength="125" class="form-control" id="Consulta" placeholder="Consulta">
-      </div>
-      <div class="col-5">
-        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
-      </div>
-    </form>
+
+    <div class="col">
+
+      <p class="text-center" ><img src="/assets/icons/phone.png" width="75px">673 51 42 25</p>
+
+    </div>
+
   </div>
+
+  <br>
+
+  <div class="fila">
+
+    <form class="formulario" [formGroup] = "user">
+
+      <div class="row">
+
+        <div class="col-left">
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" name="nom" placeholder="Nom" formControlName="nom" id="nom" #vnom [ngClass]="{'is-invalid':submitted && validacion.nom.errors}">
+
+                <!-- Validar Nickname -->
+                <div *ngIf = "submitted && validacion.nom.errors" class="invalid-feedback mensaje-error">
+
+                    <p *ngIf = "validacion.nom.errors.required">Este campo es obligatorio</p>
+                    <p *ngIf = "validacion.nom.errors.minlength">Tiene que tener un minimo de 3 caracteres</p>
+                    <p *ngIf = "validacion.nom.errors.maxlength">Tiene que tener un maximo de 15 caracteres</p>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-right">
+
+            <div class="form-group">
+
+                <input type="mail" class="form-control" name="cognom" placeholder="Cognom" formControlName="cognom" #vcognom [ngClass]="{'is-invalid':submitted && validacion.cognom.errors}">
+
+                <!-- Validar Correo -->
+                <div *ngIf = "submitted && validacion.cognom.errors" class="invalid-feedback mensaje-error">
+
+                    <p *ngIf = "validacion.cognom.errors.required">Este campo es obligatorio</p>
+                    <p *ngIf = "validacion.cognom.errors.email">Falta un @</p>
+                    <p *ngIf = "validacion.cognom.errors.minlength">Tiene que tener un minimo de 7 caracteres</p>
+                    <p *ngIf = "validacion.cognom.errors.maxlength">Tiene que tener un maximo de 50 caracteres</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+      <div class="row">
+
+        <div class="col-left">
+
+          <input type="text" maxlength="30" class="form-control" id="Nom" placeholder="Nom">
+  
+        </div>
+  
+        <div class="col-right">
+  
+          <input type="text" maxlength="50" class="form-control" id="Cognom" placeholder="Cognom">
+  
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <input type="email" maxlength="125" class="form-control" id="Correu" placeholder="Correu">
+
+      </div>
+      
+      <div class="row">
+      
+        <input type="text" maxlength="100" class="form-control" id="Adreça" placeholder="Adreça">
+      
+      </div>
+      
+      <div class="row">
+      
+        <input type="text" maxlength="125" class="form-control" id="Consulta" placeholder="Consulta">
+      
+      </div>
+      
+      <div class="row">
+      
+        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+      
+      </div>
+    
+    </form>
+
+  </div>
+ 
 </div>
 
