@@ -2,8 +2,30 @@
   <p>Contacte</p>
 </div>
 
+<<<<<<< HEAD
 <!--Section: Contact v.2-->
 <section class="mb-4" id="form-contacte">
+=======
+<div class="main-block">
+
+  <div class="row mt-5 fila">
+
+    <div class="col">
+
+      <p class="text-center"><img src="/assets/icons/@.png" width="75px">miral.enterprise.2020@gmail.com</p>
+
+    </div>
+
+    <div class="col">
+
+      <p class="text-center" ><img src="/assets/icons/phone.png" width="75px">673 51 42 25</p>
+
+    </div>
+
+  </div>
+
+  <br>
+>>>>>>> parent of c2f9122 (Contacte reactive)
 
   <!--Section description-->
   <h3 class="text-center w-responsive mx-auto mb-5 txt">Té vostè alguna pregunta?
@@ -13,14 +35,35 @@
       en qüestió d’hores per ajudar-vos.</h5>
   </h3>
 
+<<<<<<< HEAD
   <div class="row">
+=======
+    <form class="formulario" [formGroup] = "user">
+>>>>>>> parent of c2f9122 (Contacte reactive)
 
     <!--Grid column-->
     <div class="col-md-9 mb-md-0 mb-5">
       <form id="contact-form" name="contact-form" method="POST">
 
+<<<<<<< HEAD
         <!--Grid row-->
         <div class="row">
+=======
+        <div class="col-left">
+
+            <div class="form-group">
+
+                <input type="text" class="form-control" name="nom" placeholder="Nom" formControlName="nom" id="nom" #vnom [ngClass]="{'is-invalid':submitted && validacion.nom.errors}">
+
+                <!-- Validar Nickname -->
+                <div *ngIf = "submitted && validacion.nom.errors" class="invalid-feedback mensaje-error">
+
+                    <p *ngIf = "validacion.nom.errors.required">Este campo es obligatorio</p>
+                    <p *ngIf = "validacion.nom.errors.minlength">Tiene que tener un minimo de 3 caracteres</p>
+                    <p *ngIf = "validacion.nom.errors.maxlength">Tiene que tener un maximo de 15 caracteres</p>
+                    
+                </div>
+>>>>>>> parent of c2f9122 (Contacte reactive)
 
           <!--Grid column-->
           <div class="col-md-6">
@@ -31,6 +74,7 @@
           </div>
           <!--Grid column-->
 
+<<<<<<< HEAD
           <!--Grid column-->
           <div class="col-md-6">
             <div class="md-form mb-0">
@@ -51,9 +95,32 @@
               <label for="subject" class="">Concepte</label>
             </div>
           </div>
+=======
+        </div>
+
+        <div class="col-right">
+
+            <div class="form-group">
+
+                <input type="mail" class="form-control" name="cognom" placeholder="Cognom" formControlName="cognom" #vcognom [ngClass]="{'is-invalid':submitted && validacion.cognom.errors}">
+
+                <!-- Validar Correo -->
+                <div *ngIf = "submitted && validacion.cognom.errors" class="invalid-feedback mensaje-error">
+
+                    <p *ngIf = "validacion.cognom.errors.required">Este campo es obligatorio</p>
+                    <p *ngIf = "validacion.cognom.errors.email">Falta un @</p>
+                    <p *ngIf = "validacion.cognom.errors.minlength">Tiene que tener un minimo de 7 caracteres</p>
+                    <p *ngIf = "validacion.cognom.errors.maxlength">Tiene que tener un maximo de 50 caracteres</p>
+
+                </div>
+
+            </div>
+
+>>>>>>> parent of c2f9122 (Contacte reactive)
         </div>
         <!--Grid row-->
 
+<<<<<<< HEAD
         <!--Grid row-->
         <div class="row">
 
@@ -66,9 +133,27 @@
             </div>
 
           </div>
+=======
+    </div>
+
+
+      <div class="row">
+
+        <div class="col-left">
+
+          <input type="text" maxlength="30" class="form-control" id="Nom" placeholder="Nom">
+  
+        </div>
+  
+        <div class="col-right">
+  
+          <input type="text" maxlength="50" class="form-control" id="Cognom" placeholder="Cognom">
+  
+>>>>>>> parent of c2f9122 (Contacte reactive)
         </div>
         <!--Grid row-->
 
+<<<<<<< HEAD
       </form>
 
       <div class="text-center text-md-left">
@@ -100,3 +185,37 @@
 
 </section>
 <!--Section: Contact v.2-->
+=======
+      </div>
+
+      <div class="row">
+
+        <input type="email" maxlength="125" class="form-control" id="Correu" placeholder="Correu">
+
+      </div>
+      
+      <div class="row">
+      
+        <input type="text" maxlength="100" class="form-control" id="Adreça" placeholder="Adreça">
+      
+      </div>
+      
+      <div class="row">
+      
+        <input type="text" maxlength="125" class="form-control" id="Consulta" placeholder="Consulta">
+      
+      </div>
+      
+      <div class="row">
+      
+        <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+      
+      </div>
+    
+    </form>
+
+  </div>
+ 
+</div>
+
+>>>>>>> parent of c2f9122 (Contacte reactive)
