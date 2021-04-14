@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Missatge } from 'src/models/contacte.models';
 
 @Component({
   selector: 'app-contacte',
@@ -8,41 +9,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContacteComponent implements OnInit {
 
-  user!: FormGroup;
+  formContact!: FormGroup;
+  missatge!: Missatge;
 
-  constructor(private formBuilder: FormBuilder) {
-
-
-   }
+  constructor(
+    private formBuilder: FormBuilder
+    ) {}
 
   submitted = false;
 
   ngOnInit(): void {
 
     // Condicions dels camps
-    // this.user = this.formBuilder.group({
-
-    //   nom: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(20),  Validators.pattern('[a-zA-Z]*[^[\s]{1}[a-zA-Z]*]?')]],
-    //   cognom: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(50),  Validators.pattern('[a-zA-Z]*[^[\s]{1}[a-zA-Z]*]?')]]
-      // nickname: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(15), Validators.pattern('[\Sa-zA-Z_0-9\S]*')]],
-      // correo: ['', [Validators.required, Validators.email, Validators.maxLength(50), Validators.minLength(7)]],
-      // password: ['', [Validators.required, Validators.minLength(9),Validators.maxLength(20), Validators.pattern('[\Sa-zA-Z_0-9\S]*')]],
-      // password1: ['', [Validators.required, Validators.minLength(9),Validators.maxLength(20), Validators.pattern('[\Sa-zA-Z_0-9\S]*')]],
-      // centro: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(20),  Validators.pattern('[a-zA-Z]*[^[\s]{1}[a-zA-Z]*]?')]]
-
-    // })
+    this.formContact = this.formBuilder.group({
+      nombre: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(30),  Validators.pattern('[a-zA-Z]*[^[\s]{1}[a-zA-Z]*]?')]],
+      email: ['', [Validators.required, Validators.email]],
+      missatge: ['', [Validators.required, Validators.minLength(5),Validators.maxLength(255),  Validators.pattern('[a-zA-Z]*[^[\s]{1}[a-zA-Z]*]?')]],
+    })
 
   }
 
+  get f() {return this.formContact.controls;}
+
   enviarDatos(){
-
+    console.log("Funcione");
     this.submitted = true;
+    if(this.formContact.invalid){return;}
+    console.log("hola");
 
-    // if(this.user.invalid){
-
-    //   return;
-
-    // }
+    this.missatge = new Missatge(
+      this.formContact.controls.nombre.value,
+      this.formContact.controls.email.value,
+      this.formContact.controls.missatge.value
+    );
+    console.log(this.missatge);
 
   }
 

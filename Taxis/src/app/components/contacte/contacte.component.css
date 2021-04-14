@@ -1,55 +1,8 @@
-.btn{
-  margin-top: 15px;
+.titol{
+  margin-top: 2%;
+  font-size: 40px;
 }
 
-.banner {
-  background-color: #f4f4f4;
-  text-align: center;
-  padding: 50px 0px;
-  font-size: 60px;
-  font-weight: bolder;
-}
-
-h4 {
-  color: #DE1313;
-  text-transform: uppercase;
-}
-
-.fila {
-  width: 100% !important;
-}
-
-.col-left {
-	width: 49%;
-	float:left;
-	margin-right:1%;
-}
-
-.col-right {
-	width:50%;
-	float:left;
-}
-
-.txt{
-  margin-top: 3%;
-}
-
-.formulario {
-  width: 90% !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#form-contacte{
-  padding: 0px 25px 25px;
-  box-shadow:
-      0px 0px 0px 5px rgba( 255,255,255,0.4 ),
-      0px 4px 20px rgba( 0,0,0,0.33 );
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  width: 50%;
-  display: table;
-  transform: translate(50%, 20%);
-  position: relative;
+#contacte{
+  margin-top: 5%;
 }
