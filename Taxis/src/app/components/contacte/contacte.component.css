@@ -3,6 +3,21 @@
   font-size: 40px;
 }
 
+.contact{
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  background-image: url("/assets/bg/bg_contacte.png");
+}
+
+.banner {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 30px 0px;
+  font-size: 60px;
+  font-weight: bolder;
+}
+
 #contacte{
   margin-top: 5%;
 }

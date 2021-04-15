@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Missatge } from 'src/models/contacte.models';
+import { Missatge } from 'src/app/models/contacte.models';
+import { ContacteService } from 'src/app/services/contacte.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contacte',
@@ -13,7 +15,8 @@ export class ContacteComponent implements OnInit {
   missatge!: Missatge;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private contacteService: ContacteService
     ) {}
 
   submitted = false;
@@ -29,13 +32,14 @@ export class ContacteComponent implements OnInit {
 
   }
 
+  // .then(function(){window.location.reload();});
+
   get f() {return this.formContact.controls;}
 
   enviarDatos(){
     console.log("Funcione");
     this.submitted = true;
     if(this.formContact.invalid){return;}
-    console.log("hola");
 
     this.missatge = new Missatge(
       this.formContact.controls.nombre.value,
@@ -43,6 +47,20 @@ export class ContacteComponent implements OnInit {
       this.formContact.controls.missatge.value
     );
     console.log(this.missatge);
+
+    this.contacteService.enviarMissatge(this.missatge).subscribe((datos:any)=>{
+      if (datos['resultado'] == 'OK') {
+        let $mensaje = datos['mensaje'];
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Perfecte',
+          text: $mensaje,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    })
 
   }
 
