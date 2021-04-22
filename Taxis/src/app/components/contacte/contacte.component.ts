@@ -17,7 +17,8 @@ export class ContacteComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private contacteService: ContacteService
-    ) {}
+    )
+  {}
 
   submitted = false;
 
@@ -59,8 +60,14 @@ export class ContacteComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ha sorgit un error inesperat!'
+        })
       }
-    })
+    });
 
   }
 
