@@ -9,8 +9,8 @@ import { IniciComponent } from './components/inici/inici.component';
 import { QuiSomComponent } from './components/qui-som/qui-som.component';
 import { ContacteComponent } from './components/contacte/contacte.component';
 import { CompanyiaComponent } from './components/companyia/companyia.component';
-import { TrabomComponent } from './components/trobam/trabom.component';
 import { Error404Component } from './components/error404/error404.component';
+import { TrobamComponent } from './components/trobam/trobam.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     QuiSomComponent,
     ContacteComponent,
     CompanyiaComponent,
-    TrabomComponent,
+    TrobamComponent,
     Error404Component,
     SigninComponent,
     IngresComponent

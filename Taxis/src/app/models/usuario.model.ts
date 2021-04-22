@@ -1,13 +1,11 @@
-export class name {
-
+export class Usuario {
   constructor(
 
     public nom: string,
     public cognoms: string,
     public telefon: number,
-    public email: string,
-    public pass: string
+    public correu: string,
+    public password: string
 
   ) {}
-
 }

@@ -3,7 +3,7 @@ import { FormsModule, FormBuilder, FormControl, FormGroup, Validators } from '@a
 import { Router } from '@angular/router';
 import {  RxwebValidators } from '@rxweb/reactive-form-validators';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from 'src/models/usuario.model';
+import { Usuario } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,8 +16,6 @@ export class SigninComponent implements OnInit {
   usuario!: Usuario;
   formRegistro!: FormGroup;
   submitted = false;
-  minLengthTLF: number = 9;
-  maxLengthTLF: number = 9;
 
   constructor(private usuarioService: UsuarioService, private readonly fb: FormBuilder, private router: Router) {}
 
