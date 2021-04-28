@@ -13,17 +13,48 @@
   padding: 3rem !important
 }
 
+.padding {
+  padding: 3rem !important
+}
+
+.boton{
+  margin-top: 15%;
+  margin: 5%;
+}
+
+.tarjeta{
+  margin-top: 3%;
+  margin-bottom: 3%
+}
+
+#btnAgregar {
+  position: absolute;
+  left: 70%;
+  transform: translateY(-50%);
+}
+
+.edit{
+  position: relative;
+  margin: 5%;
+}
+
 .user-card-full {
   overflow: hidden
 }
 
+.bi{
+  margin-left: 3%;
+  margin-bottom: 3%;
+}
+
 .card {
-  border-radius: 5px;
+  width: 100%;
+  margin-top: 8%;
   transform: translate(28%, 20%);
-  -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.46);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.46);
   border: none;
-  margin-bottom: 30px
 }
 
 .m-r-0 {
@@ -39,9 +70,8 @@
 }
 
 .bg-c-lite-green {
-  background: #00B4DB;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #0044ff, #00B0FF);
+  background: linear-gradient(to right, #0044ff, #00B0FF);
 }
 
 .user-profile {
@@ -140,3 +170,48 @@ h6 {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out
 }
+
+.edit-btn {
+background-color: #ffffff;
+}
+
+.validation-errors {
+color: red;
+font-size: 12px;
+}
+
+.btn-style {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  margin-top: 50%;
+  font-weight: 600;
+}
+
+.table{
+  vertical-align: middle;
+}
+
+.bt{
+  margin: 2%;
+}
+
+#btnRanking, #btnPerfil {
+  margin-right: 25px;
+}
+
+#btnRanking:hover{
+  cursor:pointer;
+}
+#btnPerfil:hover {
+  cursor:pointer;
+}
+
+.btnActivado {
+  color: #00B0FF;
+}
+
+.btnActivado:hover {
+  color: #00B0FF;
+}
+
