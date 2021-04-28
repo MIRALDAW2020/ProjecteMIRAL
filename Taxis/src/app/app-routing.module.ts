@@ -9,11 +9,13 @@ import { QuiSomComponent } from './components/qui-som/qui-som.component';
 import { TrobamComponent } from './components/trobam/trobam.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'inici' },
   { path: 'inici', component: IniciComponent},
   { path: 'error404', component: Error404Component},
+  { path: 'perfil', component: PerfilComponent},
   { path: 'trobam', component: TrobamComponent},
   { path: 'quisom', component: QuiSomComponent},
   { path: 'contacte', component: ContacteComponent},
