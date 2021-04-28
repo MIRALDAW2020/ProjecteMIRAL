@@ -1,8 +1,11 @@
+import { environment } from 'src/environments/environment';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
+// import { json } from '@rxweb/reactive-form-validators';
 
 @Component({
   selector: 'app-ingres',
@@ -82,6 +85,10 @@ export class IngresComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
+
+
+          environment.varsesion= JSON.correu;
+
           // console.log('Usuari: ', correu, ' conectat.');
         } else if (datos['resultado'] == 'CKO') {
           let $mensaje = datos['mensaje'];

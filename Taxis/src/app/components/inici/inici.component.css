@@ -1,4 +1,9 @@
+.inici-page{
+  margin-top: 5%;
+}
+
 .img {
+  margin-top: 4.5%;
   width: 100%;
 }
 
@@ -6,7 +11,7 @@
 
   .center {
       margin-top: 3.5em;
-      margin-bottom: 1em;   
+      margin-bottom: 1em;
   }
 
 }
@@ -15,12 +20,12 @@
 
   .center-1 {
       margin-top: 3.5em;
-      margin-bottom: 1em;   
+      margin-bottom: 1em;
   }
 
   .center-2 {
       margin-bottom: 3.5em;
-      margin-top: 1em;   
+      margin-top: 1em;
   }
 
 }

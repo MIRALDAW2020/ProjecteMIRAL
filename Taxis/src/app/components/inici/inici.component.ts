@@ -12,8 +12,4 @@ export class IniciComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  ngAfterViewInit(){
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#b02626';
- }
 }
