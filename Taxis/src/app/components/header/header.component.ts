@@ -1,7 +1,5 @@
 import { environment } from 'src/environments/environment';
-
 import { Component, OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-header',

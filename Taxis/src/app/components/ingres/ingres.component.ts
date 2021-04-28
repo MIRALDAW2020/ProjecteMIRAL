@@ -48,29 +48,19 @@ export class IngresComponent implements OnInit {
   }
 
   enviarDatos() {
-    console.log('hola');
     this.submitted = true;
-
-    if (this.formLogin.invalid) {
-      console.log('no va');
-      return;
-    }
+    if (this.formLogin.invalid) {return;}
 
     if (this.formLogin.valid) {
-      console.log('ok');
 
       const JSON = {
-
         correu: this.formLogin.controls.correo.value,
         pass: this.formLogin.controls.password.value
-
       }
       console.log(JSON);
 
       this.loginService.login(JSON).subscribe((datos: any) => {
-
         console.log(datos);
-
         if (datos['resultado'] == 'OK') {
           let $mensaje = datos['mensaje'];
           Swal.fire({
@@ -81,10 +71,12 @@ export class IngresComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
-
           environment.varsesion= JSON.correu;
+          setTimeout(() => {
+            this.router.navigateByUrl('/inici');
+          }, 1500);
+          console.log(environment.varsesion);
 
-          // console.log('Usuari: ', correu, ' conectat.');
         } else if (datos['resultado'] == 'CKO') {
           let $mensaje = datos['mensaje'];
           Swal.fire({

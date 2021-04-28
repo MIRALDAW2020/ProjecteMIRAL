@@ -36,22 +36,14 @@
         <li class="nav-item active" *ngIf="varSesion.length==0">
           <a class="nav-link" ng-if="conected" [routerLink]="['/signin']">Registrar-se</a>
         </li>
-
-
-
-        <div *ngIf="varSesion.length!=0">
-
-          <li class="nav-item active">
-            <a class="nav-link" ng-if="disconected = false">Log out</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" ng-if="conected" [routerLink]="['/perfil']">
-              <img src="/assets/icons/user.png" width="25px" alt="Perfil Usuari">
-            </a>
-          </li>
-
-        </div>
+        <li class="nav-item active" *ngIf="varSesion.length!=0">
+          <a class="nav-link" ng-if="conected" [routerLink]="['/perfil']">
+            <img src="/assets/icons/user.png" width="25px" alt="Perfil Usuari">
+          </a>
+        </li>
+        <li class="nav-item active" *ngIf="varSesion.length!=0">
+          <a class="nav-link" ng-if="disconected = false">Log out</a>
+        </li>
 
       </ul>
     </div>
