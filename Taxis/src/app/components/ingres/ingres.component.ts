@@ -65,10 +65,6 @@ export class IngresComponent implements OnInit {
         pass: this.formLogin.controls.password.value
 
       }
-
-      // const correu = this.formLogin.controls.correo.value;
-      // const pass = this.formLogin.controls.password.value;
-
       console.log(JSON);
 
       this.loginService.login(JSON).subscribe((datos: any) => {
@@ -85,7 +81,6 @@ export class IngresComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
-
 
           environment.varsesion= JSON.correu;
 
