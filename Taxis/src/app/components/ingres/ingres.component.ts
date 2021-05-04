@@ -1,8 +1,11 @@
+import { environment } from 'src/environments/environment';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
+// import { json } from '@rxweb/reactive-form-validators';
 
 @Component({
   selector: 'app-ingres',
@@ -45,33 +48,19 @@ export class IngresComponent implements OnInit {
   }
 
   enviarDatos() {
-    console.log('hola');
     this.submitted = true;
-
-    if (this.formLogin.invalid) {
-      console.log('no va');
-      return;
-    }
+    if (this.formLogin.invalid) {return;}
 
     if (this.formLogin.valid) {
-      console.log('ok');
 
       const JSON = {
-
         correu: this.formLogin.controls.correo.value,
         pass: this.formLogin.controls.password.value
-
       }
-
-      // const correu = this.formLogin.controls.correo.value;
-      // const pass = this.formLogin.controls.password.value;
-
       console.log(JSON);
 
       this.loginService.login(JSON).subscribe((datos: any) => {
-
         console.log(datos);
-
         if (datos['resultado'] == 'OK') {
           let $mensaje = datos['mensaje'];
           Swal.fire({
@@ -82,7 +71,12 @@ export class IngresComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
-          // console.log('Usuari: ', correu, ' conectat.');
+          environment.varsesion= JSON.correu;
+          setTimeout(() => {
+            this.router.navigateByUrl('/inici');
+          }, 1500);
+          console.log(environment.varsesion);
+
         } else if (datos['resultado'] == 'CKO') {
           let $mensaje = datos['mensaje'];
           Swal.fire({

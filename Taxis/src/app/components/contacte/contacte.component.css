@@ -1,0 +1,40 @@
+.titol{
+  margin-top: 2%;
+  font-size: 40px;
+}
+
+.contact{
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  background-image: url("/assets/bg/bg_contacte.png");
+  margin-top: 5%;
+}
+
+.banner {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 30px 0px;
+  font-size: 60px;
+  font-weight: bolder;
+}
+
+#contacte{
+  margin-top: 5%;
+}
+
+.msg{
+  width: 92.5%;
+  text-align: right;
+  color: red;
+  font-size: 13px;
+  padding-top: 2px;
+  padding-left: 2px;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-weight: bold;
+  top: 1;
+  height: 26px;
+  border-radius: 2px;
+  background-color: #FFF;
+  text-align: left !important;
+}

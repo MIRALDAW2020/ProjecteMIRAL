@@ -1,1 +1,111 @@
-<p>contacte works!</p>
+<app-header></app-header>
+<div class="contact">
+  <div class="banner">
+    <p>Contacte</p>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 pb-5">
+
+        <form [formGroup]="formContact" method="POST" id="contacte">
+
+          <div class="card border-primary rounded-0">
+
+            <div class="card-header p-0">
+              <div class="bg-info text-white text-center py-2">
+                <h3><i class="fa fa-envelope"></i> Contacta'ns</h3>
+                <p class="m-0">Amb gust us ajudare'm</p>
+              </div>
+            </div>
+
+            <div class="card-body p-3">
+
+              <div class="form-group">
+                <!-- Input Nom i Cognoms -->
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+                  </div>
+                  <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nom i Cognoms"
+                    required>
+                </div>
+
+                <!-- Missatge Error Input Nom i Cognom -->
+                <div *ngIf = "submitted && f.nombre.errors">
+                  <p *ngIf = "f.nombre.errors.required" class="msg">
+                    Aquest camp es obligatori
+                  </p>
+                  <p *ngIf = "f.nombre.errors.minlength" class="msg">
+                    Minim introduïr 2 caracters!
+                  </p>
+                  <p *ngIf = "f.nombre.errors.maxlength" class="msg">
+                    Màxim introduïr 30 caracters!
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+
+                <!-- Input Correu Electronic -->
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                  </div>
+                  <input type="email" class="form-control" id="nombre" formControlName="email" placeholder="ejemplo@gmail.com"
+                    required>
+                </div>
+
+                <!-- Missatge Error Input Correu Electronic -->
+                <div *ngIf = "submitted && f.email.errors">
+                  <p *ngIf = "f.email.errors.required" class="msg">
+                    Aquest camp es obligatori
+                  </p>
+                  <p *ngIf = "f.email.errors.email" class="msg">
+                    Introdueix un correu valid!
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+
+                <!-- Input Missatge Contacte -->
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
+                  </div>
+                  <textarea class="form-control" formControlName="missatge" placeholder="Envia'ns el teu Missatge" required></textarea>
+                </div>
+
+                <!-- Missatge Error Input Missatge Contacte -->
+                <div *ngIf = "submitted && f.missatge.errors">
+                  <p *ngIf = "f.missatge.errors.required" class="msg">
+                    Aquest camp es obligatori
+                  </p>
+                  <p *ngIf = "f.missatge.errors.minlength" class="msg">
+                    Minim introduïr 5 caracters!
+                  </p>
+                  <p *ngIf = "f.missatge.errors.maxlength" class="msg">
+                    Màxim introduïr 255 caracters!
+                  </p>
+                </div>
+
+              </div>
+
+              <div class="text-center">
+                <input type="submit" (click)="enviarDatos()" value="Enviar" class="btn btn-info btn-block rounded-0 py-2">
+              </div>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</div>
