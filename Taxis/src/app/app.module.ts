@@ -15,6 +15,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { TrobamConnectatComponent } from './components/trobam-connectat/trobam-connectat.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     Error404Component,
     SigninComponent,
     IngresComponent,
-    PerfilComponent
+    PerfilComponent,
+    TrobamConnectatComponent
   ],
   imports: [
     BrowserModule,
