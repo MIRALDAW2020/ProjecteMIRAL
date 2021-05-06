@@ -60,6 +60,9 @@ export class PerfilComponent implements OnInit {
   }
 
   saveUser(){
+
+    
+
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();
     this.perfilForm.get('email')?.disable();

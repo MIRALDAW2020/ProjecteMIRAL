@@ -10,12 +10,25 @@ const api = environment.url;
 })
 export class UsuarioService {
 
+  id!: number;
+
   constructor(private http: HttpClient) { }
+
+  setMemoryUsuario(id: number) {
+    this.id = id;
+  }
+
+  getMemoryID() {
+    return this.id;
+  }
 
   registrarUsuari(registre: any){
     return this.http.post(`${api}server/registreUsuari.php`, JSON.stringify(registre));
   }
 
+  getUsuario(id: number) {
+    return this.http.get(`${api}server/seleccionarUsuario.php?id=${id}`);
+  }
 
   login(login: any) {
     return this.http.post(`${api}server/login.php`,  JSON.stringify(login));
