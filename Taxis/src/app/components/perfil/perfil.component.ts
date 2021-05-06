@@ -1,6 +1,10 @@
+import { UsuarioService } from 'src/app/services/usuario.service';
+
+import { Usuario } from 'src/app/models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-perfil',
@@ -8,6 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
+
+usuario!: Usuario;
+
+sesion: string = environment.varsesion;
 
   show: boolean;
   perfilForm: FormGroup;
@@ -39,6 +47,7 @@ export class PerfilComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private UsuarioService: UsuarioService,
     private router: Router
   )
   {
@@ -53,6 +62,39 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usuario = new Usuario();
+
+    // this.profesor = new Profesor();
+
+    this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
+
+      (resp: Usuario[])=>{
+        this.usuario = resp[0];
+
+        console.log(resp);
+
+      },
+      (error: any) => {
+
+        console.log(error);
+
+
+    )
+
+// // usamos el servicio para pedir todos los campos del profesor logeado
+//     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
+//       (resp: Profesor[])=>{
+//         this.profesor = resp[0];
+
+
+//         // console.log(resp);
+
+//       },
+//       (error: any) => {
+//         console.log(error);
+//       }
+//     )
+
   }
 
   password() {
@@ -74,5 +116,6 @@ export class PerfilComponent implements OnInit {
     this.perfilForm.get('password')?.enable();
     this.perfilForm.get('phone')?.enable();
   }
+
 
 }
