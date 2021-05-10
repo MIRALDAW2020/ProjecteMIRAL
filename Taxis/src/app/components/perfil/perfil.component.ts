@@ -77,23 +77,10 @@ sesion: string = environment.varsesion;
       (error: any) => {
 
         console.log(error);
-
+      }
 
     )
 
-// // usamos el servicio para pedir todos los campos del profesor logeado
-//     this.perfilProfesor.pedirDatosProfesor(this.sesion).subscribe(
-//       (resp: Profesor[])=>{
-//         this.profesor = resp[0];
-
-
-//         // console.log(resp);
-
-//       },
-//       (error: any) => {
-//         console.log(error);
-//       }
-//     )
 
   }
 
