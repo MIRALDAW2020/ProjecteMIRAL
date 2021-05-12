@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil',
@@ -9,37 +12,40 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
+  usuario!: Usuario;
   show: boolean;
+  usr: boolean = true;
   perfilForm: FormGroup;
 
-  validation_messages = {
-    fname: [
-      { type: 'required', message: 'El campo nombre es obligatorio' },
-      { type: 'minlength', message: 'El campo nombre debe contener como mínimo 3 carácteres' },
-    ],
-    lname: [
-      { type: 'required', message: 'El campo apellidos es obligatorio' },
-      { type: 'minlength', message: 'El campo apellidos debe contener como mínimo 3 carácteres' },
-    ],
-    email: [
-      { type: 'required', message: 'El campo e-mail es obligatorio' },
-      { type: 'minlength', message: 'El campo e-mail debe contener como mínimo 5 carácteres' },
-      { type: 'email', message: 'El campo e-mail no tiene buen formato' },
-    ],
-    phone: [
-      { type: 'required', message: 'El campo telefono es obligatorio' },
-      { type: 'minlength', message: 'El campo contraseña debe contener como mínimo 9 números' },
-    ],
-    password: [
-      { type: 'required', message: 'El campo contraseña es obligatorio' },
-      { type: 'minlength', message: 'El campo contraseña debe contener como mínimo 6 carácteres' },
-    ],
-  };
+  // validation_messages = {
+  //   fname: [
+  //     { type: 'required', message: 'El campo nombre es obligatorio' },
+  //     { type: 'minlength', message: 'El campo nombre debe contener como mínimo 3 carácteres' },
+  //   ],
+  //   lname: [
+  //     { type: 'required', message: 'El campo apellidos es obligatorio' },
+  //     { type: 'minlength', message: 'El campo apellidos debe contener como mínimo 3 carácteres' },
+  //   ],
+  //   email: [
+  //     { type: 'required', message: 'El campo e-mail es obligatorio' },
+  //     { type: 'minlength', message: 'El campo e-mail debe contener como mínimo 5 carácteres' },
+  //     { type: 'email', message: 'El campo e-mail no tiene buen formato' },
+  //   ],
+  //   phone: [
+  //     { type: 'required', message: 'El campo telefono es obligatorio' },
+  //     { type: 'minlength', message: 'El campo contraseña debe contener como mínimo 9 números' },
+  //   ],
+  //   password: [
+  //     { type: 'required', message: 'El campo contraseña es obligatorio' },
+  //     { type: 'minlength', message: 'El campo contraseña debe contener como mínimo 6 carácteres' },
+  //   ],
+  // };
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private usuarioService: UsuarioService,
   )
   {
     this.show = false;
@@ -53,6 +59,7 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usr == true;
   }
 
   password() {
@@ -61,7 +68,33 @@ export class PerfilComponent implements OnInit {
 
   saveUser(){
 
-    
+    this.usuario = new Usuario( this.perfilForm.controls.fname, this.perfilForm.controls.lname, this.perfilForm.controls.phone, this.perfilForm.controls.email );
+
+    this.usuarioService.updateUser(this.usuario).subscribe(((resp:any) =>{
+      if (resp['resultado'] == 'OK') {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Bien!',
+          text: resp['mensaje'],
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function(){
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ups... algo ha ido mal',
+          text: "Error al guardar los datos!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }), (e => {
+      console.log(e);
+    }));
 
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();

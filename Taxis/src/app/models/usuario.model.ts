@@ -5,7 +5,7 @@ export class Usuario {
     public cognoms: string,
     public telefon: number,
     public correu: string,
-    public password: string
+    public password?: string
 
   ) {}
 }
