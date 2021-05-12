@@ -20,6 +20,7 @@ sesion: string = environment.varsesion;
   show: boolean;
   perfilForm: FormGroup;
 
+
   validation_messages = {
     fname: [
       { type: 'required', message: 'El campo nombre es obligatorio' },
@@ -80,6 +81,7 @@ sesion: string = environment.varsesion;
       }
 
     )
+
 
 
   }
