@@ -16,9 +16,12 @@ export class UsuarioService {
     return this.http.post(`${api}server/registreUsuari.php`, JSON.stringify(registre));
   }
 
-
   login(login: any) {
     return this.http.post(`${api}server/login.php`,  JSON.stringify(login));
+  }
+
+  reservaTaxi(reserva: any){
+    return this.http.post(`${api}server/reserva_taxi.php`, JSON.stringify(reserva));
   }
 
 }
