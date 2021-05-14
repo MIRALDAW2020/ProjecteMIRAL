@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Reserve } from 'src/app/models/reserva.models';
 import Swal from 'sweetalert2';
 
@@ -14,46 +14,79 @@ export class TrobamConnectatComponent implements OnInit {
   reserva!: Reserve
   UsuarioService: any;
 
-  constructor() { }
+  reservaHtml : FormGroup;
+
+  constructor(
+
+
+    formBuilder: FormBuilder
+  ) {
+
+    this.reservaHtml = new FormGroup({
+
+    });
+
+  }
 
   submitted = false;
 
   ngOnInit(): void {
-  }
 
-  enviarDatos(){
-    console.log("Funcione");
-    this.submitted = true;
-    if(this.formContact.invalid){return;}
+     //creamos las condiciones de los campos del formulario de registro
 
-    this.reserva = new Reserve(
-      this.formContact.controls.correu.value,
-      this.formContact.controls.nom.value,
-      this.formContact.controls.empresa.value,
-      this.formContact.controls.parada.value
-    );
-    console.log(this.reserva);
 
-    this.UsuarioService.reservaTaxi(this.reserva).subscribe((datos:any)=>{
-      if (datos['resultado'] == 'OK') {
-        let $mensaje = datos['mensaje'];
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Perfecte',
-          text: $mensaje,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Ha sorgit un error inesperat!'
-        })
-      }
-    });
 
   }
+
+
+  formularioReserva(){
+    this.reserva=new Reserve();
+
+
+
+  }
+
+
+
+
+
+
+  // enviarDatos(){
+  //   console.log("Funcione");
+  //   this.submitted = true;
+  //   if(this.formContact.invalid){return;}
+
+  //   this.reserva = new Reserve(
+  //     this.formContact.controls.correu.value,
+  //     this.formContact.controls.nom.value,
+  //     this.formContact.controls.empresa.value,
+  //     this.formContact.controls.parada.value
+  //   );
+  //   console.log(this.reserva);
+
+  //   this.UsuarioService.reservaTaxi(this.reserva).subscribe((datos:any)=>{
+  //     if (datos['resultado'] == 'OK') {
+  //       let $mensaje = datos['mensaje'];
+  //       Swal.fire({
+  //         position: 'center',
+  //         icon: 'success',
+  //         title: 'Perfecte',
+  //         text: $mensaje,
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     }else{
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: 'Ha sorgit un error inesperat!'
+  //       })
+  //     }
+  //   });
+
+  // }
+
+
+
 
 }
