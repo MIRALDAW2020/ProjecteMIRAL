@@ -13,9 +13,9 @@ import { environment } from 'src/environments/environment';
 })
 export class PerfilComponent implements OnInit {
 
-usuario!: Usuario;
+  usuario!: Usuario;
 
-sesion: string = environment.varsesion;
+  sesion: string = environment.varsesion;
 
   show: boolean;
   perfilForm: FormGroup;
@@ -63,27 +63,34 @@ sesion: string = environment.varsesion;
   }
 
   ngOnInit(): void {
-    this.usuario = new Usuario();
-
-    // this.profesor = new Profesor();
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
 
-      (resp: Usuario[])=>{
-        this.usuario = resp[0];
-
+      (resp: any)=>{
         console.log(resp);
+
+        this.usuario=resp[0];
+        // this.perfilForm=this.usuario;
+        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
+        console.log(this.usuario);
+
+        // this.perfilForm.setValue({
+        //   fname: this.usuario.nom,
+        //   lname: this.usuario.cognoms,
+        //   email: this.usuario.correu,
+        //   phone: this.usuario.telefon,
+        //   password: this.usuario.password
+        // });
+
+        console.log(this.perfilForm.value);
+
 
       },
       (error: any) => {
-
         console.log(error);
       }
 
-    )
-
-
-
+    );
   }
 
   password() {

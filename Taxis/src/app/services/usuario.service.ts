@@ -27,10 +27,10 @@ export class UsuarioService {
 
   // Función para pedir a la BBDD que nos devuelva todos los campos del usuario que le pasamos a través de varSesion
 
-    pedirDatosUsuario(sesion: any):Observable <any>{
-      console.log(sesion);
+  pedirDatosUsuario(sesion: any):Observable <any>{
+    console.log(sesion);
     return this.http.post(`${api}server/mostrarPerfil.php`, JSON.stringify(sesion));
-   }
+  }
 
 
 }
