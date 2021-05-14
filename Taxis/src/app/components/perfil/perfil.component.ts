@@ -1,6 +1,10 @@
+import { UsuarioService } from 'src/app/services/usuario.service';
+
+import { Usuario } from 'src/app/models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-perfil',
@@ -9,8 +13,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
+  usuario!: Usuario;
+
+  sesion: string = environment.varsesion;
+
   show: boolean;
   perfilForm: FormGroup;
+
 
   validation_messages = {
     fname: [
@@ -39,6 +48,7 @@ export class PerfilComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private UsuarioService: UsuarioService,
     private router: Router
   )
   {
@@ -53,6 +63,34 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
+
+      (resp: any)=>{
+        console.log(resp);
+
+        this.usuario=resp[0];
+        // this.perfilForm=this.usuario;
+        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
+        console.log(this.usuario);
+
+        // this.perfilForm.setValue({
+        //   fname: this.usuario.nom,
+        //   lname: this.usuario.cognoms,
+        //   email: this.usuario.correu,
+        //   phone: this.usuario.telefon,
+        //   password: this.usuario.password
+        // });
+
+        console.log(this.perfilForm.value);
+
+
+      },
+      (error: any) => {
+        console.log(error);
+      }
+
+    );
   }
 
   password() {
@@ -74,5 +112,6 @@ export class PerfilComponent implements OnInit {
     this.perfilForm.get('password')?.enable();
     this.perfilForm.get('phone')?.enable();
   }
+
 
 }
