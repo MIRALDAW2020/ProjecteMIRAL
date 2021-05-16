@@ -75,20 +75,16 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
-
       (resp: any)=>{
-        console.log(resp);
-
+        this.usuariNom = resp[0].nom
         this.usuario=resp[0];
-
         console.log(this.usuario);
-
-        console.log(this.perfilForm.value);
 
       },
       (error: any) => {
         console.log(error);
-      });
+      }
+    );
 
   }
 
