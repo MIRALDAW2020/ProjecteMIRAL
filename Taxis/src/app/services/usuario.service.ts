@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+
 const api = environment.url;
 // const vsesion =  environment.varsesion;
 // import { Usuario } from '../models/usuario.model';

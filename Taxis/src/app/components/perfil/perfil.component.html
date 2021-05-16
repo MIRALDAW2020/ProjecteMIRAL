@@ -11,7 +11,7 @@
                 <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius"
                     alt="User-Profile-Image"> </div>
                 <h6 class="f-w-600">Usuari</h6>
-                <p>Nom Usuari</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                <p>{{usuariNom}}</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
               </div>
             </div>
 
@@ -42,7 +42,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="far fa-user"></i></span>
                       </div>
-                      <input type="text" class="form-control text-muted f-w-400" [(ngModel)]="usuario.cognoms"
+                      <input type="text" class="form-control text-muted f-w-400" [(ngModel)]="usuario.cognom"
                         formControlName="lname">
                     </div>
                     <!-- MISSATGE ERROR -->
@@ -60,19 +60,7 @@
                     <!-- MISSATGE ERROR -->
 
                   </div>
-                  <div class="col-sm-6">
-                    <p class="m-b-10 f-w-600">Contraseña</p>
-                    <div class="input-group input-group-sm mb-3" id="show_hide_password">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon3"><i class="fas fa-unlock-alt"></i></span>
-                      </div>
-                      <input [type]="show ? 'text' : 'password'" id="passw" class="form-control text-muted f-w-400" placeholder="Contraseña"
-                        formControlName="password">
-                    </div>
-                    <input type="checkbox" (click)="password()"> Mostrar Contraseña
-                    <!-- MISSATGE ERROR -->
-
-                  </div>
+                  
                   <div class="col-12">
                     <!-- [disabled]="perfilForm.invalid" -->
                     <button type="submit"  class="btn btn-primary"

@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class PerfilComponent implements OnInit {
 
   usuario!: Usuario;
-
+  usuariNom: string = "";
   sesion: string = environment.varsesion;
 
   show: boolean;
@@ -57,40 +57,25 @@ export class PerfilComponent implements OnInit {
       fname: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3)]),
       lname: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3)]),
       email: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(5), Validators.email]),
-      phone: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(9)]),
-      password: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(6)])
+      phone: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(9)])
     });
   }
 
   ngOnInit(): void {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
-
       (resp: any)=>{
-        console.log(resp);
-
+        // console.log(resp);
+        this.usuariNom = resp[0].nom
         this.usuario=resp[0];
-        // this.perfilForm=this.usuario;
-        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
         console.log(this.usuario);
-
-        // this.perfilForm.setValue({
-        //   fname: this.usuario.nom,
-        //   lname: this.usuario.cognoms,
-        //   email: this.usuario.correu,
-        //   phone: this.usuario.telefon,
-        //   password: this.usuario.password
-        // });
-
-        console.log(this.perfilForm.value);
-
-
+        
       },
       (error: any) => {
         console.log(error);
       }
-
     );
+
   }
 
   password() {
