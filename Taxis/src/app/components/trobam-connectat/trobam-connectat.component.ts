@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Reserve } from 'src/app/models/reserva.models';
+import { ReservaService } from 'src/app/services/reserva.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,14 +20,6 @@ export class TrobamConnectatComponent implements OnInit {
   nuevaReserva!: Reserve;
   reservaHtml!: FormGroup;
 
-  public reservaHtml!: FormGroup;
-  public submited = false;
-
-  public nuevaReserva!: Reserve;
-  public UsuarioService: any;
-
-  _correo = '';
-
   constructor(
     private formBuilder: FormBuilder,
     private reservaService: ReservaService
@@ -39,20 +32,19 @@ export class TrobamConnectatComponent implements OnInit {
 
   //sirve para ejecutar el control del formulario en el html
   get f() {
-    return this.formBuilder.controls;
+    return this.reservaHtml.controls;
   }
 
   formularioReserva() {
-    console.log(this._correo);
 
     console.log('Funcione');
     this.submitted = true;
-    if (this.formBuilder.invalid) {
+    if (this.reservaHtml.invalid) {
       return;
     }
 
     this.nuevaReserva = new Reserve(
-      this.formBuilder.controls.correoFormulario.value
+      this.reservaHtml.controls.correoFormulario.value
     );
     console.log(this.nuevaReserva);
 
@@ -79,9 +71,6 @@ export class TrobamConnectatComponent implements OnInit {
      });
 
   }
-
-
-
-  }
+}
 
 
