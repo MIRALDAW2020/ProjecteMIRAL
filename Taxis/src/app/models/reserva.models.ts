@@ -4,8 +4,8 @@ export class Reserve {
 
     public correu?: string,
     public nom?: string,
-    public empresa?: string,
-    public parada?: string
+    public empresa?: number,
+    public parada?: number
 
   ) {}
 

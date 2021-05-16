@@ -21,7 +21,10 @@ export class PerfilComponent implements OnInit {
 
   usuario!: Usuario;
 
+<<<<<<< HEAD
   usuariNom: string = "";
+=======
+>>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
   sesion: string = environment.varsesion;
 
 
@@ -72,26 +75,44 @@ export class PerfilComponent implements OnInit {
       fname: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3)]),
       lname: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3)]),
       email: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(5), Validators.email]),
-      phone: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(9)])
+      phone: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(9)]),
+      password: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(6)])
     });
   }
 
   ngOnInit(): void {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
+
       (resp: any)=>{
-        // console.log(resp);
-        this.usuariNom = resp[0].nom
+        console.log(resp);
+
         this.usuario=resp[0];
+        // this.perfilForm=this.usuario;
+        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
         console.log(this.usuario);
-        
+
+        // this.perfilForm.setValue({
+        //   fname: this.usuario.nom,
+        //   lname: this.usuario.cognoms,
+        //   email: this.usuario.correu,
+        //   phone: this.usuario.telefon,
+        //   password: this.usuario.password
+        // });
+
+        console.log(this.perfilForm.value);
+
+
       },
       (error: any) => {
         console.log(error);
       }
+
+<<<<<<< HEAD
+
+=======
     );
-
-
+>>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
   }
 
   password() {
