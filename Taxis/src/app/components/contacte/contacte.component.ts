@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Missatge } from 'src/app/models/contacte.models';
 import { ContacteService } from 'src/app/services/contacte.service';
 import Swal from 'sweetalert2';
@@ -16,7 +17,8 @@ export class ContacteComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private contacteService: ContacteService
+    private contacteService: ContacteService,
+    private router: Router
     )
   {}
 
@@ -60,6 +62,7 @@ export class ContacteComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
+        this.router.navigateByUrl('/inici');
       }else{
         Swal.fire({
           icon: 'error',
