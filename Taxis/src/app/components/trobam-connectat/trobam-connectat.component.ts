@@ -28,7 +28,14 @@ export class TrobamConnectatComponent implements OnInit {
 
   submitted = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reservaHtml=this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      nombres: ['', [Validators.required]],
+      empresa: ['', [Validators.required]],
+      parada: ['', [Validators.required]]
+    })
+  }
 
   //sirve para ejecutar el control del formulario en el html
   get f() {
@@ -44,7 +51,10 @@ export class TrobamConnectatComponent implements OnInit {
     }
 
     this.nuevaReserva = new Reserve(
-      this.reservaHtml.controls.correoFormulario.value
+      this.reservaHtml.controls.email.value,
+      this.reservaHtml.controls.nombres.value,
+      this.reservaHtml.controls.empresa.value,
+      this.reservaHtml.controls.parada.value
     );
     console.log(this.nuevaReserva);
 
