@@ -14,11 +14,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./trobam-connectat.component.css'],
 })
 export class TrobamConnectatComponent implements OnInit {
-<<<<<<< HEAD
+
   submited = false;
   nuevaReserva!: Reserve;
   reservaHtml!: FormGroup;
-=======
+
   public reservaHtml!: FormGroup;
   public submited = false;
 
@@ -26,7 +26,6 @@ export class TrobamConnectatComponent implements OnInit {
   public UsuarioService: any;
 
   _correo = '';
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,7 +54,6 @@ export class TrobamConnectatComponent implements OnInit {
     this.nuevaReserva = new Reserve(
       this.formBuilder.controls.correoFormulario.value
     );
-<<<<<<< HEAD
     console.log(this.nuevaReserva);
 
     this.reservaService.reservaTaxi(this.nuevaReserva).subscribe((datos:any)=>{
@@ -83,63 +81,7 @@ export class TrobamConnectatComponent implements OnInit {
   }
 
 
-=======
-    //  console.log(this.missatge);
 
-    //  this.contacteService.enviarMissatge(this.missatge).subscribe((datos:any)=>{
-    //    if (datos['resultado'] == 'OK') {
-    //      let $mensaje = datos['mensaje'];
-    //      Swal.fire({
-    //        position: 'center',
-    //        icon: 'success',
-    //        title: 'Perfecte',
-    //        text: $mensaje,
-    //        showConfirmButton: false,
-    //        timer: 1500,
-    //      });
-    //    }else{
-    //      Swal.fire({
-    //        icon: 'error',
-    //        title: 'Oops...',
-    //        text: 'Ha sorgit un error inesperat!'
-    //      })
-    //    }
-    //  });
   }
 
-  // enviarDatos(){
-  //   console.log("Funcione");
-  //   this.submitted = true;
-  //   if(this.formContact.invalid){return;}
 
-  //   this.reserva = new Reserve(
-  //     this.formContact.controls.correu.value,
-  //     this.formContact.controls.nom.value,
-  //     this.formContact.controls.empresa.value,
-  //     this.formContact.controls.parada.value
-  //   );
-  //   console.log(this.reserva);
-
-  //   this.UsuarioService.reservaTaxi(this.reserva).subscribe((datos:any)=>{
-  //     if (datos['resultado'] == 'OK') {
-  //       let $mensaje = datos['mensaje'];
-  //       Swal.fire({
-  //         position: 'center',
-  //         icon: 'success',
-  //         title: 'Perfecte',
-  //         text: $mensaje,
-  //         showConfirmButton: false,
-  //         timer: 1500,
-  //       });
-  //     }else{
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Oops...',
-  //         text: 'Ha sorgit un error inesperat!'
-  //       })
-  //     }
-  //   });
-
-  // }
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
-}
