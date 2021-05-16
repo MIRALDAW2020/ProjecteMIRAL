@@ -16,10 +16,7 @@ export class PerfilComponent implements OnInit {
 
   usuario!: Usuario;
 
-<<<<<<< HEAD
   usuariNom: string = "";
-=======
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
   sesion: string = environment.varsesion;
 
 
@@ -83,31 +80,16 @@ export class PerfilComponent implements OnInit {
         console.log(resp);
 
         this.usuario=resp[0];
-        // this.perfilForm=this.usuario;
-        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
+
         console.log(this.usuario);
 
-        // this.perfilForm.setValue({
-        //   fname: this.usuario.nom,
-        //   lname: this.usuario.cognoms,
-        //   email: this.usuario.correu,
-        //   phone: this.usuario.telefon,
-        //   password: this.usuario.password
-        // });
-
         console.log(this.perfilForm.value);
-
 
       },
       (error: any) => {
         console.log(error);
-      }
+      });
 
-<<<<<<< HEAD
-
-=======
-    );
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
   }
 
   password() {
@@ -115,35 +97,6 @@ export class PerfilComponent implements OnInit {
   }
 
   saveUser(){
-
-    this.usuario = new Usuario( this.perfilForm.controls.fname, this.perfilForm.controls.lname, this.perfilForm.controls.phone, this.perfilForm.controls.email );
-
-    this.usuarioService.updateUser(this.usuario).subscribe(((resp:any) =>{
-      if (resp['resultado'] == 'OK') {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Bien!',
-          text: resp['mensaje'],
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(function(){
-          window.location.reload();
-        });
-      } else {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Ups... algo ha ido mal',
-          text: "Error al guardar los datos!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    }), (e => {
-      console.log(e);
-    }));
-
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();
     this.perfilForm.get('email')?.disable();
