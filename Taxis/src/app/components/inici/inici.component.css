@@ -29,8 +29,18 @@
 
 }
 
+h4 {
+  color: #DE1313;
+  text-transform: uppercase;
+}
+
 .fila-continua {
   background-color: #f4f4f4;
   width: 100%;
   margin: auto !important;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
 }

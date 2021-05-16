@@ -10,6 +10,8 @@ import { TrobamComponent } from './components/trobam/trobam.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { TrobamConnectatComponent } from './components/trobam-connectat/trobam-connectat.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'inici' },
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'companyia', component: CompanyiaComponent},
   { path: 'signin', component: SigninComponent},
   { path: 'ingres', component: IngresComponent},
+  { path: 'trobam-connectat', component: TrobamConnectatComponent},
   { path: '**', component: Error404Component }
 ];
 
