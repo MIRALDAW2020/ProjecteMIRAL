@@ -11,17 +11,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./trobam-connectat.component.css'],
 })
 export class TrobamConnectatComponent implements OnInit {
-   submited = false;
-
-   nuevaReserva!: Reserve;
-
-   reservaService!: ReservaService;
-
-
- 
+  submited = false;
+  nuevaReserva!: Reserve;
   reservaHtml!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private reservaService: ReservaService
+    )
+  {}
 
   submitted = false;
 
@@ -50,10 +48,10 @@ export class TrobamConnectatComponent implements OnInit {
       this.reservaHtml.controls.parada.value
     );
     console.log(this.nuevaReserva);
-    
+
     this.reservaService.reservaTaxi(this.nuevaReserva).subscribe((datos:any)=>{
       console.log(datos);
-      
+
       if (datos['resultado'] == 'OK') {
          let $mensaje = datos['mensaje'];
          Swal.fire({
@@ -72,8 +70,8 @@ export class TrobamConnectatComponent implements OnInit {
          })
        }
      });
-    
+
   }
 
-  
+
 }

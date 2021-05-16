@@ -29,7 +29,7 @@
 
     // Genere les dades de resposta
     $response->resultado = 'OK';
-    $response->mensaje = 'Missatge enviat correctament, Enhorabona!';
+    $response->mensaje = 'Reserva creada correctament, Enhorabona!';
 
   }else{
 
@@ -41,7 +41,7 @@
 
     // Genere les dades de resposta
     $response->resultado = 'OK';
-    $response->mensaje = 'Missatge enviat correctament, Enhorabona!';
+    $response->mensaje = 'Reserva creada correctament, Enhorabona!';
 
   }
 
