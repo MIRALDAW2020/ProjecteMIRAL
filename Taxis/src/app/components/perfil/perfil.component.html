@@ -19,7 +19,7 @@
 
               <form [formGroup]="perfilForm">
 
-                <div class="row tarjeta" >
+                <div class="row tarjeta">
 
                   <div class="col-sm-6">
                     <!-- *ngFor="let usuari of usuarios" -->
@@ -32,6 +32,7 @@
 
                       <input type="text" class="form-control text-muted f-w-400" [(ngModel)]="usuario.nom"
                       formControlName="fname">
+
                     </div>
                     <!-- MISSATGE ERROR -->
 
@@ -42,7 +43,9 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon2"><i class="far fa-user"></i></span>
                       </div>
+
                       <input type="text" class="form-control text-muted f-w-400" [(ngModel)]="usuario.cognom"
+
                         formControlName="lname">
                     </div>
                     <!-- MISSATGE ERROR -->
@@ -54,13 +57,15 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3"><i class="far fa-envelope"></i></span>
                       </div>
+
                       <input type="email" class="form-control text-muted f-w-400" [(ngModel)]="usuario.correu"
+
                         formControlName="email">
                     </div>
                     <!-- MISSATGE ERROR -->
 
                   </div>
-                  
+
                   <div class="col-12">
                     <!-- [disabled]="perfilForm.invalid" -->
                     <button type="submit"  class="btn btn-primary"
