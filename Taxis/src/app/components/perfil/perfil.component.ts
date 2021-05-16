@@ -1,14 +1,9 @@
 import { UsuarioService } from 'src/app/services/usuario.service';
-
 import { Usuario } from 'src/app/models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { environment } from 'src/environments/environment';
-
-import { Usuario } from 'src/app/models/usuario.model';
-import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 
 
@@ -62,7 +57,6 @@ export class PerfilComponent implements OnInit {
     private route: ActivatedRoute,
     private UsuarioService: UsuarioService,
     private router: Router,
-    private router: Router,
     private usuarioService: UsuarioService,
 
   )
@@ -80,11 +74,10 @@ export class PerfilComponent implements OnInit {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
       (resp: any)=>{
-        // console.log(resp);
         this.usuariNom = resp[0].nom
         this.usuario=resp[0];
         console.log(this.usuario);
-        
+
       },
       (error: any) => {
         console.log(error);
@@ -99,34 +92,6 @@ export class PerfilComponent implements OnInit {
   }
 
   saveUser(){
-
-    this.usuario = new Usuario( this.perfilForm.controls.fname, this.perfilForm.controls.lname, this.perfilForm.controls.phone, this.perfilForm.controls.email );
-
-    this.usuarioService.updateUser(this.usuario).subscribe(((resp:any) =>{
-      if (resp['resultado'] == 'OK') {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Bien!',
-          text: resp['mensaje'],
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(function(){
-          window.location.reload();
-        });
-      } else {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Ups... algo ha ido mal',
-          text: "Error al guardar los datos!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    }), (e => {
-      console.log(e);
-    }));
 
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();
