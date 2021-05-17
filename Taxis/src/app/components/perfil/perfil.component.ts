@@ -16,10 +16,7 @@ export class PerfilComponent implements OnInit {
 
   usuario!: Usuario;
 
-<<<<<<< HEAD
   usuariNom: string = "";
-=======
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
   sesion: string = environment.varsesion;
 
 
@@ -60,7 +57,6 @@ export class PerfilComponent implements OnInit {
     private route: ActivatedRoute,
     private UsuarioService: UsuarioService,
     private router: Router,
-
     private usuarioService: UsuarioService,
 
   )
@@ -70,47 +66,26 @@ export class PerfilComponent implements OnInit {
       fname: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3)]),
       lname: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(3)]),
       email: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(5), Validators.email]),
-      phone: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(9)]),
-      password: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(6)])
+      phone: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(9)])
     });
   }
 
   ngOnInit(): void {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
-
       (resp: any)=>{
-<<<<<<< HEAD
         this.usuariNom = resp[0].nom
-=======
-        console.log(resp);
-
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
         this.usuario=resp[0];
-        // this.perfilForm=this.usuario;
-        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
+
         console.log(this.usuario);
 
-<<<<<<< HEAD
-=======
-        // this.perfilForm.setValue({
-        //   fname: this.usuario.nom,
-        //   lname: this.usuario.cognoms,
-        //   email: this.usuario.correu,
-        //   phone: this.usuario.telefon,
-        //   password: this.usuario.password
-        // });
-
-        console.log(this.perfilForm.value);
-
-
->>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
       },
       (error: any) => {
         console.log(error);
       }
-
     );
+
+
   }
 
   password() {
@@ -118,6 +93,36 @@ export class PerfilComponent implements OnInit {
   }
 
   saveUser(){
+
+    this.usuario = new Usuario(this.perfilForm.controls.fname.value, this.perfilForm.controls.lname.value, this.perfilForm.controls.phone.value, this.perfilForm.controls.email.value);
+    console.log(this.usuario);
+
+    this.usuarioService.updateUser(this.usuario).subscribe((datos:any) =>{
+      console.log(datos);
+
+      if (datos['resultado'] == 'OK') {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Bien!',
+          text: datos['mensaje'],
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function(){
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ups... algo ha ido mal',
+          text: "Error al guardar los datos!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();
     this.perfilForm.get('email')?.disable();

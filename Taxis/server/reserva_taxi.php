@@ -33,15 +33,15 @@
 
   }else{
 
-    mysqli_query(
-      $con,
-      "insert into reserva_taxi (nom_usuari, correu_electronic, empresa_taxi, parada_taxi)
-      values ('$params->nom', '$params->correu', $params->empresa, $params->parada)"
-    );
+    // mysqli_query(
+    //   $con,
+    //   "insert into reserva_taxi (nom_usuari, correu_electronic, empresa_taxi, parada_taxi)
+    //   values ('$params->nom', '$params->correu', $params->empresa, $params->parada)"
+    // );
 
     // Genere les dades de resposta
     $response->resultado = 'OK';
-    $response->mensaje = 'Reserva creada correctament, Enhorabona!';
+    $response->mensaje = 'Fallo en insertar la reserva';
 
   }
 
