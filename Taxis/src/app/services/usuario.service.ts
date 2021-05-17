@@ -4,10 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-
 const api = environment.url;
-// const vsesion =  environment.varsesion;
-// import { Usuario } from '../models/usuario.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +13,29 @@ const api = environment.url;
 export class UsuarioService {
 
 
+  id!: number;
+
   constructor(private http: HttpClient) { }
+
+  setMemoryUsuario(id: number) {
+    this.id = id;
+  }
+
+  getMemoryID() {
+    return this.id;
+  }
+
+  updateUser(usuari: Usuario){
+    return this.http.post(`${api}server/modificarUsuari.php`, JSON.stringify(usuari));
+  }
 
   registrarUsuari(registre: any){
     return this.http.post(`${api}server/registreUsuari.php`, JSON.stringify(registre));
+  }
+
+
+  getUsuario(id: number) {
+    return this.http.get(`${api}server/seleccionarUsuario.php?id=${id}`);
   }
 
   login(login: any) {

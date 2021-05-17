@@ -1,10 +1,11 @@
 import { UsuarioService } from 'src/app/services/usuario.service';
-
 import { Usuario } from 'src/app/models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-perfil',
@@ -14,11 +15,16 @@ import { environment } from 'src/environments/environment';
 export class PerfilComponent implements OnInit {
 
   usuario!: Usuario;
+
   usuariNom: string = "";
   sesion: string = environment.varsesion;
 
+
+
   show: boolean;
+  usr: boolean = true;
   perfilForm: FormGroup;
+
 
 
   validation_messages = {
@@ -45,11 +51,14 @@ export class PerfilComponent implements OnInit {
     ],
   };
 
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private UsuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private usuarioService: UsuarioService,
+
   )
   {
     this.show = false;
@@ -65,16 +74,17 @@ export class PerfilComponent implements OnInit {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
       (resp: any)=>{
-        // console.log(resp);
         this.usuariNom = resp[0].nom
         this.usuario=resp[0];
+
         console.log(this.usuario);
-        
+
       },
       (error: any) => {
         console.log(error);
       }
     );
+
 
   }
 
@@ -83,6 +93,36 @@ export class PerfilComponent implements OnInit {
   }
 
   saveUser(){
+
+    this.usuario = new Usuario(this.perfilForm.controls.fname.value, this.perfilForm.controls.lname.value, this.perfilForm.controls.phone.value, this.perfilForm.controls.email.value);
+    console.log(this.usuario);
+
+    this.usuarioService.updateUser(this.usuario).subscribe((datos:any) =>{
+      console.log(datos);
+
+      if (datos['resultado'] == 'OK') {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Bien!',
+          text: datos['mensaje'],
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function(){
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ups... algo ha ido mal',
+          text: "Error al guardar los datos!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();
     this.perfilForm.get('email')?.disable();

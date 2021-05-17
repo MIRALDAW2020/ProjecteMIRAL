@@ -1,8 +1,12 @@
-import { ReservaService } from './../../services/reserva.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators,} from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { Reserve } from 'src/app/models/reserva.models';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { ReservaService } from 'src/app/services/reserva.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,6 +15,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./trobam-connectat.component.css'],
 })
 export class TrobamConnectatComponent implements OnInit {
+
   submited = false;
   nuevaReserva!: Reserve;
   reservaHtml!: FormGroup;
@@ -33,13 +38,17 @@ export class TrobamConnectatComponent implements OnInit {
   }
 
   //sirve para ejecutar el control del formulario en el html
-  get f() {return this.reservaHtml.controls;}
+  get f() {
+    return this.reservaHtml.controls;
+  }
 
   formularioReserva() {
-    console.log('Funciona');
 
+    console.log('Funcione');
     this.submitted = true;
-    if (this.reservaHtml.invalid) {return;}
+    if (this.reservaHtml.invalid) {
+      return;
+    }
 
     this.nuevaReserva = new Reserve(
       this.reservaHtml.controls.email.value,
@@ -72,6 +81,6 @@ export class TrobamConnectatComponent implements OnInit {
      });
 
   }
-
-
 }
+
+
