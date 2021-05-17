@@ -93,6 +93,31 @@ export class PerfilComponent implements OnInit {
 
   saveUser(){
 
+    this.usuario = new Usuario(this.perfilForm.controls.fname.value, this.perfilForm.controls.lname.value, this.perfilForm.controls.phone.value, this.perfilForm.controls.email.value);
+    this.usuarioService.updateUser(this.usuario).subscribe((datos:any) =>{
+      if (datos['resultado'] == 'OK') {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Bien!',
+          text: datos['mensaje'],
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(function(){
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ups... algo ha ido mal',
+          text: "Error al guardar los datos!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+
     this.perfilForm.get('fname')?.disable();
     this.perfilForm.get('lname')?.disable();
     this.perfilForm.get('email')?.disable();
