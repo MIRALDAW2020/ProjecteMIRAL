@@ -8,43 +8,77 @@
   $json = file_get_contents('php://input');//Recibe el json de angular
   $params = json_decode($json);
 
+  // echo $params;
+
+
   require("db.php");
   session_start();
   $con = retornarConexion();
 
-  class Result{}
-  $response = new Result();
+  // class Result{}
+  $response = new stdClass();
 
-  $instruccion = "select count(*) as 'rows' from reserva_taxi where email = '$params->correu'";
-  $res = mysqli_query($con,$instruccion);
-  $datos = mysqli_fetch_assoc($res);
 
-  if ($datos['rows'] == 0){
+  $instruccion ="insert into reserva_taxi (nom_usuari,correu_electronic,empresa_taxi,nom_parada)
+  VALUES ('$params->nom','$params->correu','$params->empresa','$params->parada')";
 
-    mysqli_query(
-      $con,
-      "insert into reserva_taxi (nom_usuari, correu_electronic, empresa_taxi, parada_taxi)
-      values ('$params->nom', '$params->correu', $params->empresa, $params->parada)"
-    );
+  // "insert into usuaris (nom, cognom, telefon, correu, contrasenya)
+  // values ('$params->nom','$params->cognoms','$params->telefon','$params->correu','$params->password')"
 
-    // Genere les dades de resposta
-    $response->resultado = 'OK';
-    $response->mensaje = 'Reserva creada correctament, Enhorabona!';
 
-  }else{
+  // $res = mysqli_query($con,$instruccion);
+  // $datos = mysqli_fetch_assoc($res);
 
-    // mysqli_query(
-    //   $con,
-    //   "insert into reserva_taxi (nom_usuari, correu_electronic, empresa_taxi, parada_taxi)
-    //   values ('$params->nom', '$params->correu', $params->empresa, $params->parada)"
-    // );
 
-    // Genere les dades de resposta
-    $response->resultado = 'OK';
+
+  if ($con->query($instruccion) === TRUE) {
+     // Genere les dades de resposta
+     $response->resultado = 'OK';
+     $response->mensaje = 'Reserva creada correctament, Enhorabona!';
+
+  } else if($con->query($instruccion) === FALSE) {
+       // Genere les dades de resposta
+    $response->resultado = 'KO';
     $response->mensaje = 'Fallo en insertar la reserva';
-
   }
-
   echo json_encode($response); // MUESTRA EL JSON GENERADO
+
+
+
+
+
+
+
+
+
+
+
+  // if ($datos['rows'] == 0){
+
+  //   mysqli_query(
+  //     $con,
+  //     "insert into reserva_taxi (nom_usuari, correu_electronic, empresa_taxi, parada_taxi)
+  //     values ('$params->nom', '$params->correu', $params->empresa, $params->parada)"
+  //   );
+
+  //   // Genere les dades de resposta
+  //   $response->resultado = 'OK';
+  //   $response->mensaje = 'Reserva creada correctament, Enhorabona!';
+
+  // }else{
+
+  //   // mysqli_query(
+  //   //   $con,
+  //   //   "insert into reserva_taxi (nom_usuari, correu_electronic, empresa_taxi, parada_taxi)
+  //   //   values ('$params->nom', '$params->correu', $params->empresa, $params->parada)"
+  //   // );
+
+  //   // Genere les dades de resposta
+  //   $response->resultado = 'OK';
+  //   $response->mensaje = 'Fallo en insertar la reserva';
+
+  // }
+
+  // $con.close();
 
 ?>
