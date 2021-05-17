@@ -16,7 +16,10 @@ export class PerfilComponent implements OnInit {
 
   usuario!: Usuario;
 
+<<<<<<< HEAD
   usuariNom: string = "";
+=======
+>>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
   sesion: string = environment.varsesion;
 
 
@@ -75,17 +78,39 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
 
     this.UsuarioService.pedirDatosUsuario(this.sesion).subscribe(
+
       (resp: any)=>{
+<<<<<<< HEAD
         this.usuariNom = resp[0].nom
+=======
+        console.log(resp);
+
+>>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
         this.usuario=resp[0];
+        // this.perfilForm=this.usuario;
+        // this.usuario = new Usuario(resp[0].nom, resp[0].cognoms, resp[0].telefon, resp[0].correu, resp[0].password);
         console.log(this.usuario);
 
+<<<<<<< HEAD
+=======
+        // this.perfilForm.setValue({
+        //   fname: this.usuario.nom,
+        //   lname: this.usuario.cognoms,
+        //   email: this.usuario.correu,
+        //   phone: this.usuario.telefon,
+        //   password: this.usuario.password
+        // });
+
+        console.log(this.perfilForm.value);
+
+
+>>>>>>> parent of 46fea8f (Intento Insertar reserva en db error en formulario)
       },
       (error: any) => {
         console.log(error);
       }
-    );
 
+    );
   }
 
   password() {
