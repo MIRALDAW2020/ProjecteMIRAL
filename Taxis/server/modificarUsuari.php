@@ -13,18 +13,24 @@
   require("db.php");
   $con=retornarConexion();
 
- ~$ = mysqli_query($con,"update usuaris set nom='$params->nom','cognom='$params->cognom','telefon='$params->telefon',' correu='$params->correu'
-     where correu=$params->correu");
+  $instruccion ="UPDATE usuaris SET 
+                    nom ='".$params->nom."',
+                    cognom ='".$params->cognom."',
+                    telefon ='".$params->telefon."',
+                    correu ='".$params->correu."'
+                    WHERE correu=$params->correu";
 
+  $response = new stdClass(); 
 
-  class Result {}
+  if ($con->query($instruccion) === TRUE) {
+    // Genere les dades de resposta
+    $response->resultado = 'OK';
+    $response->mensaje = 'Usuario modificado correctamente!';
 
-
-
-
-  $response = new Result();
-  $response->resultado = 'OK';
-  $response->mensaje = 'Datos guardados';
-
-
+  } else if($con->query($instruccion) === FALSE) {
+      // Genere les dades de resposta
+   $response->resultado = 'KO';
+   $response->mensaje = 'Fallo al modificar el usuario';
+  }
   echo json_encode($response);
+?>
