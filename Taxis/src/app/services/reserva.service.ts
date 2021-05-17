@@ -12,7 +12,7 @@ export class ReservaService {
   constructor(private http: HttpClient) { }
 
   reservaTaxi(reserva: any){
-    return this.http.post(`${api}server/insertarReserva.php`, JSON.stringify(reserva));
+    return this.http.post(`${api}server/reserva_taxi.php`, JSON.stringify(reserva));
   }
-  
+
 }

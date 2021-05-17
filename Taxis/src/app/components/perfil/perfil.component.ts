@@ -76,7 +76,7 @@ export class PerfilComponent implements OnInit {
       (resp: any)=>{
         this.usuariNom = resp[0].nom
         this.usuario=resp[0];
-        
+
         console.log(this.usuario);
 
       },
