@@ -26,7 +26,6 @@ export class UsuarioService {
 
   updateUser(usuari: Usuario){
     console.log(usuari);
-
     return this.http.post(`${api}server/modificarAlumno.php`, JSON.stringify(usuari));
   }
 

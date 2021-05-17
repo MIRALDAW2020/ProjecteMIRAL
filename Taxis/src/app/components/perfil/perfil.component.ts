@@ -76,6 +76,7 @@ export class PerfilComponent implements OnInit {
       (resp: any)=>{
         this.usuariNom = resp[0].nom
         this.usuario=resp[0];
+        
         console.log(this.usuario);
 
       },
@@ -94,7 +95,11 @@ export class PerfilComponent implements OnInit {
   saveUser(){
 
     this.usuario = new Usuario(this.perfilForm.controls.fname.value, this.perfilForm.controls.lname.value, this.perfilForm.controls.phone.value, this.perfilForm.controls.email.value);
+    console.log(this.usuario);
+
     this.usuarioService.updateUser(this.usuario).subscribe((datos:any) =>{
+      console.log(datos);
+
       if (datos['resultado'] == 'OK') {
         Swal.fire({
           position: 'center',

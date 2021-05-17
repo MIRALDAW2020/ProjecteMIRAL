@@ -31,7 +31,7 @@
     mysqli_query(
       $con,
       "insert into usuaris (nom, cognom, telefon, correu, contrasenya)
-      values ('$params->nom','$params->cognoms','$params->telefon','$params->correu','$params->password')"
+      values ('$params->nom','$params->cognom','$params->telefon','$params->correu','$params->password')"
     );
 
     // Genere les dades de resposta
