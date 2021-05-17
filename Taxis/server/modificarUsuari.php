@@ -13,17 +13,18 @@
   require("db.php");
   $con=retornarConexion();
 
-  mysqli_query($con,"update usuaris set nom='$params->nom',
-                                        cognom='$params->cognom',
-                                        telefon='$params->telefon',
-                                        correu='$params->correu'
-                                        where correu=$params->correu");
+ ~$ = mysqli_query($con,"update usuaris set nom='$params->nom','cognom='$params->cognom','telefon='$params->telefon',' correu='$params->correu'
+     where correu=$params->correu");
 
 
   class Result {}
 
+
+
+
   $response = new Result();
   $response->resultado = 'OK';
   $response->mensaje = 'Datos guardados';
+
 
   echo json_encode($response);
