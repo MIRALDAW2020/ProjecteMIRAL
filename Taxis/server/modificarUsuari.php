@@ -1,6 +1,8 @@
 <?php
+
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header("Content-Type: text/html;charset=utf-8");
   header('Content-Type: application/json');
 
   $json = file_get_contents('php://input');
@@ -11,12 +13,11 @@
   require("db.php");
   $con=retornarConexion();
 
-  mysqli_query($con,"update alumnos set nickname='$params->nickname',
-                                        password='$params->password',
-                                        firstname='$params->firstname',
-                                        lastname='$params->lastname',
-                                        email='$params->email'
-                                        where idusu=$params->id");
+  mysqli_query($con,"update usuaris set nom='$params->nom',
+                                        cognom='$params->cognom',
+                                        telefon='$params->telefon',
+                                        correu='$params->correu'
+                                        where correu=$params->correu");
 
 
   class Result {}

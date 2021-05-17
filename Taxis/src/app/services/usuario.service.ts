@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 
 const api = environment.url;
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,16 +25,12 @@ export class UsuarioService {
   }
 
   updateUser(usuari: Usuario){
+    console.log(usuari);
     return this.http.post(`${api}server/modificarUsuari.php`, JSON.stringify(usuari));
   }
 
   registrarUsuari(registre: any){
     return this.http.post(`${api}server/registreUsuari.php`, JSON.stringify(registre));
-  }
-
-
-  getUsuario(id: number) {
-    return this.http.get(`${api}server/seleccionarUsuario.php?id=${id}`);
   }
 
   login(login: any) {
