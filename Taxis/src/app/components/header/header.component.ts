@@ -1,6 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -15,13 +16,28 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   logout(){
-    setTimeout(() => {
-      this.router.navigateByUrl('/ingres');
-    }, 700);
-    this.varSesion='';
+    this.varSesion = '';
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      timerProgressBar: true,
+      title:"Tancant la sessió",
+      showConfirmButton: false,
+      timer: 1000,
+    }).then(function(){
+      window.location.reload();
+    });this.router.navigateByUrl('/inici');
+
+    console.log(this.varSesion);
+
+  }
+  refresh(): void {
+    window.location.reload();
   }
 
 }
