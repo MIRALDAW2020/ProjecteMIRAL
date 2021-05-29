@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Reserve } from 'src/app/models/reserva.models';
+import {ReservaService} from 'src/app/services/reserva.service';
 
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { environment } from 'src/environments/environment';
