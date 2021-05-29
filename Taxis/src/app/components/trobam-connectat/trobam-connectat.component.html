@@ -77,8 +77,46 @@
     </div>
 
   </div>
-<!--
-  <div class="row mx-5 mb-5">
+
+  <div class="Reservas mb-5">
+<h3 class="ml-5">Reservas hechas</h3>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th scope="col">Correo</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Parada</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reserva of verReservas ">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<br>
+  <!-- <div class="row mx-5 mb-5">
 
     <div class="col-lg-6 col-md-6 col-sm-6 mb-5">
 
@@ -92,6 +130,7 @@
           <p class="card-text"><b>Reserva numero:</b> 1</p>
           <p class="card-text"><b>Parada on ha reservat el taxi: </b>[parada]</p>
           <p class="card-text"><b>Ha reservado el taxi en la empresa: </b>[empresa]</p>
+          <p class="card-text"><b>Ha reservado el taxo con el correo: </b>[correo]</p>
 
         </div>
 

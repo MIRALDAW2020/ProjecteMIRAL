@@ -5,7 +5,8 @@ export class Reserve {
     public correu?: string,
     public nom?: string,
     public empresa?: number,
-    public parada?: number
+    public parada?: number,
+    public fechaReserva?: String
 
   ) {}
 

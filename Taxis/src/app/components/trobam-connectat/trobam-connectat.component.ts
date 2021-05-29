@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Reserve } from 'src/app/models/reserva.models';
-import { ReservaService } from 'src/app/services/reserva.service';
+
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,13 +18,21 @@ import Swal from 'sweetalert2';
 })
 export class TrobamConnectatComponent implements OnInit {
 
+
+  sesion = environment.varsesion;
+
+
   submited = false;
   nuevaReserva!: Reserve;
   reservaHtml!: FormGroup;
 
+  verReservas!: Reserve[];
+
+  listarRankingsAlumno!: UsuarioService
+
   constructor(
     private formBuilder: FormBuilder,
-    private reservaService: ReservaService
+    private reservaService: UsuarioService,
     )
   {}
 
@@ -35,6 +45,25 @@ export class TrobamConnectatComponent implements OnInit {
       empresa: ['', [Validators.required]],
       parada: ['', [Validators.required]]
     })
+
+
+
+       // reocojiendo las reservas de la base de datos
+      this.listarRankingsAlumno.pedirListaReservasUsuario(this.sesion).subscribe(
+        (respServidor: any) => {
+          
+          this.verReservas = respServidor;
+  
+          console.log(this.verReservas);
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      )
+
+  
+
+
   }
 
   //sirve para ejecutar el control del formulario en el html

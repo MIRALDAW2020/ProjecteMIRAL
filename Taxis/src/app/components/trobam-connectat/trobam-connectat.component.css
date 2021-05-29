@@ -24,3 +24,18 @@
   margin-left: auto;
   margin-left: auto;
 }
+
+.Reservas{
+  background-color: rgb(227, 233, 233);
+  margin-left: 6%;
+  margin-right: 6%;
+  border-radius: 1%;
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  -ms-border-radius: 5;
+  -o-border-radius: 5;
+  border-color: black;
+  
+ 
+  
+}
