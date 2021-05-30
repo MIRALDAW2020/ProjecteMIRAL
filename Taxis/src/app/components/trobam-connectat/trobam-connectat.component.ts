@@ -1,3 +1,4 @@
+import { verReserva } from 'src/app/models/verReserva.model';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -27,13 +28,16 @@ export class TrobamConnectatComponent implements OnInit {
   nuevaReserva!: Reserve;
   reservaHtml!: FormGroup;
 
-  verReservas!: Reserve[];
+  verReservas!: verReserva[];
+
 
   listarRankingsAlumno!: UsuarioService
 
   constructor(
     private formBuilder: FormBuilder,
     private reservaService: UsuarioService,
+
+    private verReservaService: UsuarioService,
     )
   {}
 
@@ -41,7 +45,6 @@ export class TrobamConnectatComponent implements OnInit {
 
   ngOnInit(): void {
     this.reservaHtml=this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
       nombres: ['', [Validators.required]],
       empresa: ['', [Validators.required]],
       parada: ['', [Validators.required]]
@@ -49,19 +52,36 @@ export class TrobamConnectatComponent implements OnInit {
 
 
 
-       // reocojiendo las reservas de la base de datos
-      this.listarRankingsAlumno.pedirListaReservasUsuario(this.sesion).subscribe(
+      //  // reocojiendo las reservas de la base de datos
+      //  this.verReservaUsuario.pedirListaReservasUsuario(this.sesion).subscribe(
+      //   (respServidor: any) => {
+         
+      //     this.verReservas = respServidor;
+  
+      //     console.log(this.verReservas);
+
+
+      
+      //   },
+      //   (error: any) => {
+      //     console.log(error);
+      //   }
+      // )
+
+      this.verReservaService.pedirListaReservasUsuario(this.sesion).subscribe(
         (respServidor: any) => {
-          
+         
           this.verReservas = respServidor;
   
           console.log(this.verReservas);
+
+
+      
         },
         (error: any) => {
           console.log(error);
         }
       )
-
   
 
 
@@ -81,11 +101,12 @@ export class TrobamConnectatComponent implements OnInit {
     }
 
     this.nuevaReserva = new Reserve(
-      this.reservaHtml.controls.email.value,
+  
       this.reservaHtml.controls.nombres.value,
       this.reservaHtml.controls.empresa.value,
       this.reservaHtml.controls.parada.value
     );
+    this.nuevaReserva.correu=this.sesion;
     console.log(this.nuevaReserva);
 
     this.reservaService.reservaTaxi(this.nuevaReserva).subscribe((datos:any)=>{

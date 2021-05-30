@@ -52,6 +52,7 @@ export class UsuarioService {
 
   pedirListaReservasUsuario(sesion: any): Observable <any>{
     console.log(sesion);
+    
     return this.http.post(`${api}server/mostrarReservesUsuari.php`, JSON.stringify(sesion));
 
   }
