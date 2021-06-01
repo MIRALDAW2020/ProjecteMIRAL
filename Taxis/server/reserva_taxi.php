@@ -18,9 +18,11 @@
   // class Result{}
   $response = new stdClass();
 
+  $date = date('Y-m-d H:i:s');
 
-  $instruccion ="insert into reserva_taxi (nom_usuari,correu_electronic,empresa_taxi,nom_parada)
-  VALUES ('$params->nom','$params->correu','$params->empresa','$params->parada')";
+
+  $instruccion ="insert into reserva_taxi (nom_usuari,correu_electronic,empresa_taxi,nom_parada,fecha_reserva)
+  VALUES ('$params->nom','$params->correu','$params->empresa','$params->parada','$date')";
 
   // "insert into usuaris (nom, cognom, telefon, correu, contrasenya)
   // values ('$params->nom','$params->cognoms','$params->telefon','$params->correu','$params->password')"
@@ -39,7 +41,7 @@
   } else if($con->query($instruccion) === FALSE) {
        // Genere les dades de resposta
     $response->resultado = 'KO';
-    $response->mensaje = 'Fallo en insertar la reserva';
+    $response->mensaje = 'Fallo en insertar la reserva :fecha:  '.$date;
   }
   echo json_encode($response); // MUESTRA EL JSON GENERADO
 

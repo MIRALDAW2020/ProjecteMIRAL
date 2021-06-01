@@ -12,6 +12,8 @@ import {ReservaService} from 'src/app/services/reserva.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
+import { date } from '@rxweb/reactive-form-validators';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-trobam-connectat',
@@ -52,21 +54,6 @@ export class TrobamConnectatComponent implements OnInit {
 
 
 
-      //  // reocojiendo las reservas de la base de datos
-      //  this.verReservaUsuario.pedirListaReservasUsuario(this.sesion).subscribe(
-      //   (respServidor: any) => {
-         
-      //     this.verReservas = respServidor;
-  
-      //     console.log(this.verReservas);
-
-
-      
-      //   },
-      //   (error: any) => {
-      //     console.log(error);
-      //   }
-      // )
 
       this.verReservaService.pedirListaReservasUsuario(this.sesion).subscribe(
         (respServidor: any) => {
@@ -99,6 +86,7 @@ export class TrobamConnectatComponent implements OnInit {
     if (this.reservaHtml.invalid) {
       return;
     }
+    var date = new Date();
 
     this.nuevaReserva = new Reserve(
   
@@ -106,7 +94,12 @@ export class TrobamConnectatComponent implements OnInit {
       this.reservaHtml.controls.empresa.value,
       this.reservaHtml.controls.parada.value
     );
+
     this.nuevaReserva.correu=this.sesion;
+
+
+    console.log(this.nuevaReserva +" Fecha de ahora");
+
     console.log(this.nuevaReserva);
 
     this.reservaService.reservaTaxi(this.nuevaReserva).subscribe((datos:any)=>{

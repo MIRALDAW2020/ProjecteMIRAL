@@ -1,3 +1,4 @@
+import { date } from '@rxweb/reactive-form-validators';
 export class Reserve {
 
   constructor(
@@ -7,7 +8,7 @@ export class Reserve {
     public empresa?: string,
     public parada?: string,
     public correu?: string,
-    // public fechaReserva?: String
+    // public fecha_reserva?: Date
 
   ) {}
 
