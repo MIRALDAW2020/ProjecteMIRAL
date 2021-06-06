@@ -73,6 +73,39 @@ Ver Reservas
     </table>
 
   </div>
+  <div *ngIf="verReservasbool">
+
+
+    <table class="table tableCustom" >
+
+      <thead>
+        <tr>
+          <th scope="col">Correo</th>
+          <th scope="col">Nom_Client</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Parada</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let usuarios of verReservas">
+
+          
+           <td>{{usuarios['correu_electronic']}}</td>
+          <td>{{usuarios['nom_usuari']}}</td>
+          <td>{{usuarios['empresa_taxi']}}</td>
+          <td>{{usuarios['nom_parada']}}</td>
+          <td>{{usuarios['fecha_reserva']}}</td> 
+
+
+     
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
 
 
 <!-- 

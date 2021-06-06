@@ -21,7 +21,7 @@
   $conexion = retornarConexion();
 
   // realizamos la query a la BD
-  $query =  "SELECT * FROM reserva_taxi";
+  $query =  "SELECT * FROM reserva_taxi ORDER BY fecha_reserva DESC";
   // echo ($query);
 
   $resultado = mysqli_query($conexion, $query);

@@ -31,3 +31,12 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
 }
+
+.tableCustom{
+    background-color: white;
+    width: 70%;
+    height: 70%;
+ text-decoration: dotted;
+ margin-left: 20%;
+
+}

@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
   verReservasbool: Boolean = false;
 
   verUsuarios!: VerUsuarios[];
+  verReservas!: verReserva[];
 
   sesion: String = 'hola123';
 
@@ -53,9 +54,9 @@ export class AdminComponent implements OnInit {
     this.verReservasService.verReservasService(this.sesion).subscribe(
       (respServidor: any) => {
         console.log(respServidor);
-        this.verUsuarios = respServidor;
+        this.verReservas = respServidor;
 
-        console.log(this.verUsuarios);
+        console.log(this.verReservas);
       },
       (error: any) => {
         console.log(error);
