@@ -26,26 +26,19 @@
   $datos = mysqli_fetch_assoc($res);
 
   if ($datos['rows'] == 0) {
-
     // Insertem a la BBDD
     mysqli_query(
       $con,
       "insert into usuaris (nom, cognom, telefon, correu, contrasenya)
       values ('$params->nom','$params->cognom','$params->telefon','$params->correu','$params->password')"
     );
-
     // Genere les dades de resposta
     $response->resultado = 'OK';
     $response->mensaje = 'Usuari registrat correctament, Enhorabona!';
-
   }else{
-
     // Genere les dades de resposta
     $response->resultado = 'KO';
     $response->mensaje = 'Usuari ja registrat!';
-
   }
-
   echo json_encode($response); // MUESTRA EL JSON GENERADO
-
 ?>

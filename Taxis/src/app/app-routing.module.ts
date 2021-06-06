@@ -1,3 +1,5 @@
+import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
+import { AdminComponent } from './components/admin/admin.component';
 // import { TrobamComponent } from './trobam/trobam.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,8 +13,6 @@ import { SigninComponent } from './components/signin/signin.component';
 import { IngresComponent } from './components/ingres/ingres.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { TrobamConnectatComponent } from './components/trobam-connectat/trobam-connectat.component';
-
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'inici' },
   { path: 'inici', component: IniciComponent},
@@ -25,7 +25,11 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent},
   { path: 'ingres', component: IngresComponent},
   { path: 'trobam-connectat', component: TrobamConnectatComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'loginAdmin', component: LoginAdminComponent},
+
   { path: '**', component: Error404Component }
+
 ];
 
 @NgModule({

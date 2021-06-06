@@ -46,15 +46,6 @@
   echo json_encode($response); // MUESTRA EL JSON GENERADO
 
 
-
-
-
-
-
-
-
-
-
   // if ($datos['rows'] == 0){
 
   //   mysqli_query(

@@ -1,0 +1,33 @@
+.fondo {
+    position: relative;
+    background: linear-gradient(rgba(24, 10, 87, 0.7), rgba(23, 82, 69, 0.7), rgba(0, 0, 0, .7));
+    height: 1500px;
+    background-size: cover;
+}
+
+
+
+
+.btnVerUsuarios{
+    width: 20%;
+    height: 5%;
+    margin-left: 20%;
+   
+    background-color: rgb(255, 255, 255);
+
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+}
+
+.btnVerReservas{
+    width: 20%;
+    height: 5%;
+    margin-left: 20%;
+   
+    background-color: rgb(255, 255, 255);
+
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+}

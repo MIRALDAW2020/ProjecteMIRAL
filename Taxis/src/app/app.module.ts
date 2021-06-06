@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { TrobamConnectatComponent } from './components/trobam-connectat/trobam-connectat.component';
 
+import { AdminComponent } from './components/admin/admin.component';
+import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,11 @@ import { TrobamConnectatComponent } from './components/trobam-connectat/trobam-c
     SigninComponent,
     IngresComponent,
     PerfilComponent,
-    TrobamConnectatComponent
+    TrobamConnectatComponent,
+    
+    AdminComponent,
+    LoginAdminComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
