@@ -7,7 +7,6 @@
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
-
   // recoje los datos que le pasa el service en formato json
   $json = file_get_contents('php://input');
 
@@ -15,16 +14,14 @@
   $params = json_decode($json);
 
   
-
   // importamos el archivo con la conexión a la BD
   require_once 'db.php';
-
 
   // creamos la conexión
   $conexion = retornarConexion();
 
   // realizamos la query a la BD
-  $query =  "SELECT id_usuari, nom,cognom, telefon, correu FROM usuaris";
+  $query =  "SELECT * FROM reserva_taxi";
   // echo ($query);
 
   $resultado = mysqli_query($conexion, $query);
@@ -33,28 +30,38 @@
   // inciamos la variable $datos como array donde vamos a guardar los datos que obt4engamos de la consulta
   $datos = [];
 
+  while ($row = mysqli_fetch_assoc($resultado)) {
+    $datos[] = $row;
+}
+
+  // cerramos la conexión a la BD
+  $conexion->close();
   $respuesta = new \stdClass();
   
+  if(count($datos)==0){
+   
+    $respuesta->mensaje = "No existen datos";
+  
+  
+    print json_encode($respuesta);
+  
+  }else {
+  
+    print json_encode($datos);
+  
+  }
 
   // bucle para que guarde los datos encontrados con el select de la consulta en el array
-  if ($resultado){
+  // if ($resultado){
 
-  //   while ($row = $result->fetch_assoc()) {
-  //     echo $row['classtype']."<br>";
+  // //   while ($row = $result->fetch_assoc()) {
+  // //     echo $row['classtype']."<br>";
+  // // }
+ 
+  // print json_encode($datos);
   // }
-    while ($row = mysqli_fetch_assoc($resultado)) {
-      
-      $datos[] = $row;
-  
-    // cerramos la conexión a la BD
-
-  }
-  print json_encode($datos);
-  }
-  else {
-    print json_encode($respuesta->mensaje="Error123");
-  }
-  $conexion->close();
-
-
+  // else {
+  //   print json_encode($respuesta->mensaje="Error123");
+  // }
+ 
 ?>

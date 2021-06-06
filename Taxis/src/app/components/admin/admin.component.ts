@@ -7,65 +7,60 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  verUsuariosbool:Boolean =false;
-    verReservas:Boolean = false;
+  verUsuariosbool: Boolean = false;
+  verReservasbool: Boolean = false;
 
-verUsuarios!:VerUsuarios[];
+  verUsuarios!: VerUsuarios[];
 
-sesion: String = "hola123";
-
+  sesion: String = 'hola123';
 
   constructor(
-  
-private verUsuariosService: AdministradorService
+    private verUsuariosService: AdministradorService,
+    private verReservasService: AdministradorService,
+    
+    
+    ) {}
 
+  ngOnInit(): void {}
 
-  ) { }
+  btnVerUsuarios() {
+    this.verUsuariosbool = true;
+    this.verReservasbool = false;
 
-  ngOnInit(): void {
-
-
-  }
-
-
-  btnVerUsuarios(){
-    this.verUsuariosbool=true;
-    this.verReservas=false;
-
-    console.log("usuarios @@@@@@");
-  
-
-
+    console.log('usuarios @@@@@@');
 
     this.verUsuariosService.verUsuariosService(this.sesion).subscribe(
       (respServidor: any) => {
-       
+        console.log(respServidor);
         this.verUsuarios = respServidor;
 
         console.log(this.verUsuarios);
-
-
-    
       },
       (error: any) => {
         console.log(error);
       }
-    )
-
-    
-
-
-
+    );
   }
 
+  btnVerReservas() {
+    this.verUsuariosbool = false;
+    this.verReservasbool = true;
+    console.log('reservas');
 
-  btnVerReservas(){
-    this.verUsuariosbool=false;
-    this.verReservas=true;
-    console.log("reservas");
+    this.verReservasService.verReservasService(this.sesion).subscribe(
+      (respServidor: any) => {
+        console.log(respServidor);
+        this.verUsuarios = respServidor;
+
+        console.log(this.verUsuarios);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
 
   }
 }

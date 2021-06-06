@@ -21,13 +21,16 @@ export class AdministradorService {
     return this.http.post(`${api}server/loginAdministrador.php`, JSON.stringify(json));
   }
 
-
-  
   verUsuariosService(sesion: any):Observable <any>{
-    console.log(sesion);
-    return this.http.post(`${api}server/verUsuariosAdmin.php`,JSON.stringify(sesion));
+    
+    return this.http.post(`${api}server/verUsuariosAdmin.php`, JSON.stringify(sesion));
   }
 
+  verReservasService(sesion:any):Observable <any>{
+
+    return this.http.post(`${api}server/verTodasReservasTaxi.php`, JSON.stringify(sesion));
+  }
+  
 
 
 }
